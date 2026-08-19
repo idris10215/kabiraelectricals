@@ -2,6 +2,7 @@
 import Hero from "@/Components/Hero";
 import ScrollVideoWrapper from "@/Components/ScrollVideo";
 import Services from "@/Components/Services";
+import ClientLogos from "@/Components/ClientLogos";
 import Link from "next/link";
 import Image from "next/image";
 import { ShieldCheck, Award, Building2, CheckCircle2, Phone, Mail, MapPin, ArrowRight } from "lucide-react";
@@ -16,6 +17,9 @@ export default function Home() {
 
       {/* 2. Executive Light-Themed Services Section */}
       <Services />
+
+      {/* 3. Trusted Client & Partner Logos Banner */}
+      <ClientLogos />
 
       {/* 3. About Company & Trust Pillars Section */}
       <section id="about" className="py-20 sm:py-28 px-4 sm:px-6 lg:px-8 bg-white text-slate-900 border-t border-slate-200">

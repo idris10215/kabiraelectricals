@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ArrowRight, ShieldCheck } from "lucide-react";
 
 const navLinks = [
   { name: "Home", href: "/" },
@@ -73,27 +73,45 @@ const Navbar = () => {
 
       </div>
 
-      {/* FULL-WIDTH MOBILE MENU DRAWER */}
+      {/* POLISHED MOBILE MENU DRAWER */}
       {mobileMenuOpen && (
-        <div className="md:hidden absolute top-full left-0 w-full bg-slate-950/95 backdrop-blur-xl border-b border-white/10 shadow-2xl z-40 transition-all">
-          <nav className="flex flex-col items-center py-6 gap-4 font-medium text-white">
+        <div className="md:hidden absolute top-full left-0 w-full bg-slate-950/95 backdrop-blur-xl border-b border-amber-500/20 shadow-2xl z-40 transition-all px-6 py-6 space-y-6">
+          {/* Brand header on Top Left inside Drawer */}
+          <div className="flex items-center justify-between border-b border-slate-800 pb-4">
+            <div className="flex items-center gap-2">
+              <ShieldCheck className="w-5 h-5 text-amber-400" />
+              <span className="font-extrabold text-sm text-white tracking-wider uppercase">
+                Kabira <span className="text-amber-500">Electricals</span>
+              </span>
+            </div>
+            <span className="text-[10px] font-bold text-amber-400 uppercase tracking-widest bg-slate-900 px-2.5 py-1 rounded-full border border-amber-500/30">
+              Class 1 Govt.
+            </span>
+          </div>
+
+          {/* Nav Links Aligned Cleanly to Right */}
+          <nav className="flex flex-col items-end space-y-4">
             {navLinks.map((link) => (
               <Link
                 key={link.name}
                 href={link.href}
                 onClick={() => setmobileMenuOpen(false)}
-                className="text-base font-semibold text-slate-200 hover:text-amber-400 transition-colors"
+                className="text-base font-bold text-slate-200 hover:text-amber-400 transition-colors uppercase tracking-wider text-right py-1"
               >
                 {link.name}
               </Link>
             ))}
-            <Link
-              href="#contact"
-              onClick={() => setmobileMenuOpen(false)}
-              className="mt-2 px-8 py-2.5 rounded-full bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-center shadow-lg transition-all text-sm"
-            >
-              Get Quote
-            </Link>
+
+            <div className="pt-2 w-full flex justify-end">
+              <Link
+                href="#contact"
+                onClick={() => setmobileMenuOpen(false)}
+                className="inline-flex items-center gap-2 px-7 py-3 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-extrabold text-xs uppercase tracking-wider shadow-lg transition-all"
+              >
+                <span>Get a Turnkey Quote</span>
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
           </nav>
         </div>
       )}
