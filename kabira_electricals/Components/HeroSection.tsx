@@ -4,7 +4,7 @@ import Hero from "./Hero";
 
 export default function HeroSection() {
   return (
-    <section className="relative w-full aspect-[4/3.5] sm:aspect-square md:aspect-video md:min-h-screen flex items-center justify-center overflow-hidden pt-16 md:pt-20">
+    <section className="relative w-full h-[80vh] min-h-[520px] sm:h-auto sm:aspect-square md:aspect-video md:min-h-screen flex items-center justify-center overflow-hidden pt-12 sm:pt-16 md:pt-20">
       {/* Background Video Layer */}
       <div className="absolute inset-0 w-full h-full z-0">
         <video
@@ -12,12 +12,12 @@ export default function HeroSection() {
           loop
           muted
           playsInline
-          className="w-full h-full object-cover sm:w-full sm:h-70"
+          className="w-full h-full object-cover"
         >
           <source src="/hero-video.mp4" type="video/mp4" />
         </video>
         {/* Dark Slate Overlay for Text Readability */}
-        <div className="absolute inset-0 bg-slate-950/70" />
+        <div className="absolute inset-0 bg-slate-950/75" />
       </div>
 
       {/* Foreground Hero Content Container */}
