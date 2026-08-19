@@ -39,16 +39,18 @@ const servicePillars: ServicePillar[] = [
 ];
 
 export default function Services() {
+  const sectionRef = useRef<HTMLDivElement>(null);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // Enable mobile GSAP horizontal scroll animation for small screens
+    // Enable mobile GSAP horizontal pinned scroll animation
     const isMobile = window.innerWidth < 1024;
-    if (!isMobile || !scrollContainerRef.current) return;
+    if (!isMobile || !scrollContainerRef.current || !sectionRef.current) return;
 
     const ctx = gsap.context(() => {
       const container = scrollContainerRef.current;
-      if (!container) return;
+      const section = sectionRef.current;
+      if (!container || !section) return;
 
       const totalWidth = container.scrollWidth - container.clientWidth;
 
@@ -56,10 +58,13 @@ export default function Services() {
         x: -totalWidth,
         ease: "none",
         scrollTrigger: {
-          trigger: container,
-          start: "top 75%",
-          end: "bottom 25%",
+          trigger: section,
+          pin: true,
+          start: "top top",
+          end: () => `+=${totalWidth}`,
           scrub: 1,
+          anticipatePin: 1,
+          invalidateOnRefresh: true,
         },
       });
     });
@@ -69,6 +74,7 @@ export default function Services() {
 
   return (
     <section
+      ref={sectionRef}
       id="services"
       className="relative bg-slate-50 text-slate-900 py-16 sm:py-24 px-4 sm:px-6 lg:px-8 border-t border-slate-200 overflow-hidden"
     >
@@ -89,8 +95,7 @@ export default function Services() {
           </h2>
         </div>
 
-        {/* 4 Clean Pillar Cards Container 
-            Mobile: GSAP horizontal scroll reveal | Desktop: Single 4-column row */}
+        {/* 4 Clean Pillar Cards Container */}
         <div className="w-full overflow-hidden">
           <div
             ref={scrollContainerRef}

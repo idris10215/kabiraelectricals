@@ -56,6 +56,7 @@ export default function Hero() {
           duration: 0.6,
           stagger: 0.1,
           ease: "power2.out",
+          clearProps: "transform",
         },
         "-=0.3"
       );
@@ -110,7 +111,7 @@ export default function Hero() {
         <div className="w-full grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-4">
           <div
             ref={card1Ref}
-            className="bg-slate-950/60 backdrop-blur-md p-3 sm:p-4 rounded-xl border border-white/15 shadow-xl hover:border-amber-500/50 transition-all hover:bg-slate-950/75"
+            className="p-3 sm:p-4 rounded-xl border border-white/15 shadow-xl hover:border-amber-500/50 transition-colors duration-200 hover:bg-slate-950/75"
           >
             <div className="font-display text-lg sm:text-3xl font-extrabold text-white">44+</div>
             <div className="text-[9px] sm:text-xs font-bold text-amber-400 uppercase tracking-wider mt-0.5 sm:mt-1">
@@ -121,7 +122,7 @@ export default function Hero() {
 
           <div
             ref={card2Ref}
-            className="bg-slate-950/60 backdrop-blur-md p-3 sm:p-4 rounded-xl border border-white/15 shadow-xl hover:border-amber-500/50 transition-all hover:bg-slate-950/75"
+            className="p-3 sm:p-4 rounded-xl border border-white/15 shadow-xl hover:border-amber-500/50 transition-colors duration-200 hover:bg-slate-950/75"
           >
             <div className="font-display text-lg sm:text-3xl font-extrabold text-white">15+</div>
             <div className="text-[9px] sm:text-xs font-bold text-amber-400 uppercase tracking-wider mt-0.5 sm:mt-1">
@@ -132,7 +133,7 @@ export default function Hero() {
 
           <div
             ref={card3Ref}
-            className="bg-slate-950/60 backdrop-blur-md p-3 sm:p-4 rounded-xl border border-white/15 shadow-xl hover:border-amber-500/50 transition-all hover:bg-slate-950/75"
+            className="p-3 sm:p-4 rounded-xl border border-white/15 shadow-xl hover:border-amber-500/50 transition-colors duration-200 hover:bg-slate-950/75"
           >
             <div className="font-display text-lg sm:text-3xl font-extrabold text-white">100+</div>
             <div className="text-[9px] sm:text-xs font-bold text-amber-400 uppercase tracking-wider mt-0.5 sm:mt-1">
@@ -143,7 +144,7 @@ export default function Hero() {
 
           <div
             ref={card4Ref}
-            className="bg-slate-950/60 backdrop-blur-md p-3 sm:p-4 rounded-xl border border-white/15 shadow-xl hover:border-amber-500/50 transition-all hover:bg-slate-950/75"
+            className="p-3 sm:p-4 rounded-xl border border-white/15 shadow-xl hover:border-amber-500/50 transition-colors duration-200 hover:bg-slate-950/75"
           >
             <div className="font-display text-lg sm:text-3xl font-extrabold text-amber-400">BESCOM</div>
             <div className="text-[9px] sm:text-xs font-bold text-white uppercase tracking-wider mt-0.5 sm:mt-1">
@@ -157,7 +158,7 @@ export default function Hero() {
         <div ref={ctaRef} className="pt-1">
           <a
             href="#contact"
-            className="inline-flex items-center gap-2 rounded-xl bg-amber-500 hover:bg-amber-400 px-5 py-2.5 sm:px-8 sm:py-3.5 font-extrabold text-slate-950 transition-all shadow-2xl text-xs sm:text-sm tracking-wider uppercase transform hover:scale-105"
+            className="inline-flex items-center gap-2 rounded-xl bg-amber-500 hover:bg-amber-400 px-5 py-2.5 sm:px-8 sm:py-3.5 font-extrabold text-slate-950 transition-transform duration-200 shadow-2xl text-xs sm:text-sm tracking-wider uppercase transform hover:scale-105"
           >
             <span>Get a Quote</span>
             <ArrowRight className="w-4 h-4" />
