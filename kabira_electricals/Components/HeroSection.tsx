@@ -12,7 +12,7 @@ export default function HeroSection() {
           loop
           muted
           playsInline
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover sm:w-full sm:h-7"
         >
           <source src="/hero-video.mp4" type="video/mp4" />
         </video>
