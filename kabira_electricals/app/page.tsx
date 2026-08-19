@@ -9,8 +9,8 @@ import { ShieldCheck, Award, Building2, CheckCircle2, Phone, Mail, MapPin, Arrow
 export default function Home() {
   return (
     <main className="bg-slate-950 text-slate-100 min-h-screen">
-      {/* 1. Hero Section with Dedicated Video Scrubbing */}
-      <ScrollVideoWrapper videoSrc="/videos/kling-test.mp4" scrollMultiplier={1.6}>
+      {/* 1. Hero Section with Dedicated Video Background */}
+      <ScrollVideoWrapper videoSrc="/videos/kling-test.mp4">
         <Hero />
       </ScrollVideoWrapper>
 
