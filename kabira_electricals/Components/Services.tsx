@@ -60,11 +60,12 @@ export default function Services() {
         scrollTrigger: {
           trigger: section,
           pin: true,
-          start: "top top",
+          start: "top top+=64px",
           end: () => `+=${totalWidth}`,
           scrub: 1,
           anticipatePin: 1,
           invalidateOnRefresh: true,
+          // markers: true,
         },
       });
     });
@@ -76,19 +77,15 @@ export default function Services() {
     <section
       ref={sectionRef}
       id="services"
-      className="relative bg-slate-50 text-slate-900 py-16 sm:py-24 px-4 sm:px-6 lg:px-8 border-t border-slate-200 overflow-hidden"
+      className="relative bg-slate-50 text-slate-900 py-12 sm:py-24 px-4 sm:px-6 lg:px-8 border-t border-slate-200 overflow-hidden"
     >
       {/* Background Grid Pattern */}
       <div className="absolute inset-0 bg-[radial-gradient(#e2e8f0_1px,transparent_1px)] [background-size:24px_24px] opacity-60 pointer-events-none" />
 
       <div className="relative max-w-7xl mx-auto z-10 space-y-12">
-        
+
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto space-y-4">
-          <div className="inline-flex items-center gap-2 rounded-full border border-amber-500/30 bg-amber-50 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-amber-700 shadow-sm">
-            <Zap className="w-4 h-4 text-amber-500 fill-amber-500" />
-            <span>Class 1 Engineering Services</span>
-          </div>
+        <div className="text-center max-w-3xl mx-auto space-y-2">
 
           <h2 className="font-display text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight uppercase">
             Our Core <span className="text-amber-600">Services</span>
