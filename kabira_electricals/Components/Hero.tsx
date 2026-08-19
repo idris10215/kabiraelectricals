@@ -95,7 +95,7 @@ export default function Hero() {
         {/* Paragraph (Fixed mobile font size & clamp) */}
         <p
           ref={paraRef}
-          className="max-w-2xl text-1xl sm:text-base leading-snug sm:leading-relaxed text-slate-200 font-normal drop-shadow-md line-clamp-3 sm:line-clamp-none"
+          className="max-w-2xl text-1xl sm:text-base leading-snug sm:leading-relaxed text-slate-200 font-normal drop-shadow-md "
         >
           With Kabira Electricals, empower your business for long-term operational success. As leading Class 1 electrical contractors in Bangalore, our quality-driven approach ensures flawless execution of complex HT works, transformer works, and turnkey KPTCL projects.
         </p>
