@@ -39,19 +39,20 @@ export default function Hero() {
             start: "top top",
             end: "85% top",
             scrub: 0.8, // Smooth fluid scrub response
+            invalidateOnRefresh: true,
           },
         });
 
         // Step A: Translate the header text block UPWARDS smoothly to make room below
-        // tl.to(
-        //   heroTextGroupRef.current,
-        //   {
-        //     y: -110,
-        //     ease: "power2.inOut",
-        //     duration: 1,
-        //   },
-        //   0
-        // );
+        tl.to(
+          heroTextGroupRef.current,
+          {
+            y: -110,
+            ease: "power2.inOut",
+            duration: 1,
+          },
+          0
+        );
 
         // Step B: 4 Features/Metrics cards animate UP into the created space
         tl.fromTo(
@@ -71,7 +72,14 @@ export default function Hero() {
       }
     }, container);
 
-    return () => ctx.revert();
+    const refreshTimer = setTimeout(() => {
+      ScrollTrigger.refresh();
+    }, 400);
+
+    return () => {
+      clearTimeout(refreshTimer);
+      ctx.revert();
+    };
   }, []);
 
   return (
@@ -82,7 +90,7 @@ export default function Hero() {
       <div className="w-full max-w-3xl flex flex-col justify-center min-h-0 relative my-auto">
         
         {/* INITIAL LOAD GROUP: Badge + Headline + Paragraph 
-            Vertically centered perfectly on load because bottom elements are absolute/flow-managed */}
+            Vertically centered perfectly on load */}
         <div
           ref={heroTextGroupRef}
           className="space-y-4 sm:space-y-6 pt-12 sm:pt-16 transition-transform"

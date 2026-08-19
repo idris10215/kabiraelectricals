@@ -1,21 +1,25 @@
-// components/ScrollVideoWrapper.tsx
-'use client';
+"use client";
 
-import { useEffect, useRef, ReactNode } from 'react';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useEffect, useRef, ReactNode } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
 interface Props {
   children: ReactNode;
   videoSrc: string;
-  scrollMultiplier?: number; // Adjust scroll distance speed (default 2.0 = 200vh)
+  scrollMultiplier?: number;
 }
 
-export default function ScrollVideoWrapper({ children, videoSrc, scrollMultiplier = 2.0 }: Props) {
+export default function ScrollVideoWrapper({
+  children,
+  videoSrc,
+  scrollMultiplier = 2.0,
+}: Props) {
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const containerRef = useRef<HTMLDivElement | null>(null);
+  const animRef = useRef<gsap.core.Tween | null>(null);
 
   useEffect(() => {
     const video = videoRef.current;
@@ -28,19 +32,24 @@ export default function ScrollVideoWrapper({ children, videoSrc, scrollMultiplie
     const setupAnimation = () => {
       if (!video.duration || isNaN(video.duration) || !isFinite(video.duration)) return;
 
+      if (animRef.current) {
+        animRef.current.kill();
+        animRef.current = null;
+      }
+
       video.pause();
 
       const obj = { currentTime: 0 };
       let rafId: number | null = null;
 
-      const scrollAnim = gsap.to(obj, {
+      animRef.current = gsap.to(obj, {
         currentTime: video.duration,
-        ease: 'none',
+        ease: "none",
         scrollTrigger: {
           trigger: container,
-          start: 'top top',
-          end: 'bottom bottom',
-          scrub: 0.1,
+          start: "top top",
+          end: "bottom bottom",
+          scrub: 0.2,
           invalidateOnRefresh: true,
           onUpdate: () => {
             if (!video || !isFinite(obj.currentTime)) return;
@@ -48,8 +57,13 @@ export default function ScrollVideoWrapper({ children, videoSrc, scrollMultiplie
             if (rafId) cancelAnimationFrame(rafId);
 
             rafId = requestAnimationFrame(() => {
-              if (typeof (video as HTMLVideoElement & { fastSeek?: (t: number) => void }).fastSeek === 'function') {
-                (video as HTMLVideoElement & { fastSeek: (t: number) => void }).fastSeek(obj.currentTime);
+              if (
+                typeof (video as HTMLVideoElement & { fastSeek?: (t: number) => void })
+                  .fastSeek === "function"
+              ) {
+                (video as HTMLVideoElement & { fastSeek: (t: number) => void }).fastSeek(
+                  obj.currentTime
+                );
               } else {
                 video.currentTime = obj.currentTime;
               }
@@ -58,36 +72,50 @@ export default function ScrollVideoWrapper({ children, videoSrc, scrollMultiplie
         },
       });
 
+      // Refresh ScrollTrigger so GSAP registers exact positions on production builds
+      ScrollTrigger.refresh();
+
       return () => {
         if (rafId) cancelAnimationFrame(rafId);
-        scrollAnim.kill();
       };
     };
 
-    if (video.readyState >= 2 && video.duration && isFinite(video.duration)) {
+    if (video.readyState >= 1 && video.duration && isFinite(video.duration)) {
       setupAnimation();
-    } else {
-      video.addEventListener('loadedmetadata', setupAnimation);
-      video.addEventListener('canplay', setupAnimation);
     }
 
+    const onMeta = () => setupAnimation();
+    video.addEventListener("loadedmetadata", onMeta);
+    video.addEventListener("canplay", onMeta);
+    video.addEventListener("loadeddata", onMeta);
+
+    // Initial delay refresh for production static export
+    const timer = setTimeout(() => {
+      if (video.readyState >= 1 && video.duration) {
+        setupAnimation();
+      }
+      ScrollTrigger.refresh();
+    }, 400);
+
     return () => {
-      video.removeEventListener('loadedmetadata', setupAnimation);
-      video.removeEventListener('canplay', setupAnimation);
-      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+      clearTimeout(timer);
+      video.removeEventListener("loadedmetadata", onMeta);
+      video.removeEventListener("canplay", onMeta);
+      video.removeEventListener("loadeddata", onMeta);
+      if (animRef.current) {
+        animRef.current.kill();
+        animRef.current = null;
+      }
     };
   }, [videoSrc]);
 
   return (
-    /* Outer container defines total scroll distance */
     <div
       ref={containerRef}
       className="sticky-hero-wrapper relative w-full"
       style={{ height: `${scrollMultiplier * 100}vh` }}
     >
-      {/* Sticky viewport frame holding both background video AND Hero content */}
-      <div className="sticky top-0 h-dvh w-full overflow-hidden bg-black">
-        {/* Background Video */}
+      <div className="sticky top-0 h-dvh w-full overflow-hidden bg-slate-950">
         <video
           ref={videoRef}
           src={videoSrc}
@@ -97,10 +125,8 @@ export default function ScrollVideoWrapper({ children, videoSrc, scrollMultiplie
           className="absolute inset-0 h-full w-full object-cover z-0 brightness-105"
         />
 
-        {/* Dark overlay covering entire video */}
         <div className="absolute inset-0 bg-gradient-to-r from-slate-950/90 via-slate-950/60 to-slate-950/40 z-10 pointer-events-none" />
 
-        {/* Foreground Hero Content Container inside sticky viewport */}
         <div className="absolute inset-0 z-20 flex items-center justify-center">
           {children}
         </div>
