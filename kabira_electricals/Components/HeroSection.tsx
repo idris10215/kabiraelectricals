@@ -4,7 +4,7 @@ import Hero from "./Hero";
 
 export default function HeroSection() {
   return (
-    <section className="relative w-full h-[80vh] min-h-[520px] sm:h-auto sm:aspect-square md:aspect-video md:min-h-screen flex items-center justify-center overflow-hidden pt-12 sm:pt-16 md:pt-20">
+    <section className="relative w-full h-[60vh] min-h-[480px] sm:h-auto sm:aspect-square md:aspect-video md:min-h-screen flex items-center justify-center overflow-hidden pt-12 sm:pt-16 md:pt-20">
       {/* Background Video Layer */}
       <div className="absolute inset-0 w-full h-full z-0">
         <video
