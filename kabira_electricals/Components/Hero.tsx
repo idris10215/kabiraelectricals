@@ -44,15 +44,15 @@ export default function Hero() {
         });
 
         // Step A: Translate the header text block UPWARDS smoothly to make room below
-        tl.to(
-          heroTextGroupRef.current,
-          {
-            y: -110,
-            ease: "power2.inOut",
-            duration: 1,
-          },
-          0
-        );
+        // tl.to(
+        //   heroTextGroupRef.current,
+        //   {
+        //     y: -110,
+        //     ease: "power2.inOut",
+        //     duration: 1,
+        //   },
+        //   0
+        // );
 
         // Step B: 4 Features/Metrics cards animate UP into the created space
         tl.fromTo(
