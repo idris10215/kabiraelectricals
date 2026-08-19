@@ -91,7 +91,7 @@ export default function Hero() {
         {/* Main Headline */}
         <h1
           ref={titleRef}
-          className="font-display sm:text-7xl lg:text-6xl font-extrabold uppercase leading-tight sm:leading-[1.05] tracking-tight text-white drop-shadow-2xl"
+          className="font-display sm:text-7xl lg:text-6xl font-extrabold uppercase leading-tight tracking-tight text-white drop-shadow-2xl"
         >
           Powering Corporate &{" "}
           <span className="text-amber-500">Industrial Success</span>

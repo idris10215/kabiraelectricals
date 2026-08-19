@@ -12,12 +12,12 @@ export default function HeroSection() {
           loop
           muted
           playsInline
-          className="w-full h-full object-cover sm:w-full sm:h-7"
+          className="w-full h-full object-cover sm:w-full sm:h-70"
         >
           <source src="/hero-video.mp4" type="video/mp4" />
         </video>
         {/* Dark Slate Overlay for Text Readability */}
-        <div className="absolute inset-0 bg-slate-950/75" />
+        <div className="absolute inset-0 bg-slate-950/70" />
       </div>
 
       {/* Foreground Hero Content Container */}
