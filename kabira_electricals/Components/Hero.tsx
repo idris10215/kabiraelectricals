@@ -77,7 +77,7 @@ export default function Hero() {
       <div className="space-y-2 sm:space-y-4 w-full">
         {/* Govt. License Badge */}
         <div ref={badgeRef}>
-          <div className="inline-flex items-center gap-1.5 rounded-full border border-amber-500/50 bg-slate-950/80 px-2.5 py-0.5 sm:px-4 sm:py-2 text-[8px] sm:text-xs font-semibold uppercase tracking-wider text-amber-300 backdrop-blur-md shadow-xl">
+          <div className="inline-flex items-center gap-1.5 rounded-full border border-amber-500/50 bg-slate-950/70 px-2.5 py-0.5 sm:px-4 sm:py-2 text-[10px] sm:text-xs font-semibold uppercase tracking-wider text-amber-300 backdrop-blur-md shadow-xl">
             <ShieldCheck className="w-3 h-3 sm:w-4 sm:h-4 text-amber-400 shrink-0" />
             <span>Govt. Licensed Class 1 Electrical Contractor</span>
           </div>
@@ -86,7 +86,7 @@ export default function Hero() {
         {/* Main Headline (Increased mobile font size) */}
         <h1
           ref={titleRef}
-          className="font-display text-5xl sm:text-5xl lg:text-6xl font-extrabold uppercase leading-tight tracking-tight text-white drop-shadow-2xl"
+          className="font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold uppercase leading-tight tracking-tight text-white drop-shadow-2xl"
         >
           Powering Corporate &{" "}
           <span className="text-amber-500">Industrial Success</span>
@@ -95,7 +95,7 @@ export default function Hero() {
         {/* Paragraph (Fixed mobile font size & clamp) */}
         <p
           ref={paraRef}
-          className="max-w-2xl text-3xl sm:text-base leading-snug sm:leading-relaxed text-slate-200 font-normal drop-shadow-md line-clamp-3 sm:line-clamp-none"
+          className="max-w-2xl text-1xl sm:text-base leading-snug sm:leading-relaxed text-slate-200 font-normal drop-shadow-md line-clamp-3 sm:line-clamp-none"
         >
           With Kabira Electricals, empower your business for long-term operational success. As leading Class 1 electrical contractors in Bangalore, our quality-driven approach ensures flawless execution of complex HT works, transformer works, and turnkey KPTCL projects.
         </p>
@@ -109,7 +109,7 @@ export default function Hero() {
             className="p-2 sm:p-4 rounded-xl border border-white/15 shadow-xl hover:border-amber-500/50 transition-colors duration-200"
           >
             <div className="font-display text-base sm:text-3xl font-extrabold text-white">44+</div>
-            <div className="text-2xl sm:text-xs font-bold text-amber-400 uppercase tracking-wider mt-0.5">
+            <div className="text-0.5xl sm:text-xs font-bold text-amber-400 uppercase tracking-wider mt-0.5">
               Executed Projects
             </div>
           </div>
@@ -119,7 +119,7 @@ export default function Hero() {
             className="p-2 sm:p-4 rounded-xl border border-white/15 shadow-xl hover:border-amber-500/50 transition-colors duration-200"
           >
             <div className="font-display text-base sm:text-3xl font-extrabold text-white">15+</div>
-            <div className="text-2xl sm:text-xs font-bold text-amber-400 uppercase tracking-wider mt-0.5">
+            <div className="text-0.5xl sm:text-xs font-bold text-amber-400 uppercase tracking-wider mt-0.5">
               Years Experience
             </div>
           </div>
@@ -129,7 +129,7 @@ export default function Hero() {
             className="p-2 sm:p-4 rounded-xl border border-white/15 shadow-xl hover:border-amber-500/50 transition-colors duration-200"
           >
             <div className="font-display text-base sm:text-3xl font-extrabold text-white">100+</div>
-            <div className="text-2xl sm:text-xs font-bold text-amber-400 uppercase tracking-wider mt-0.5">
+            <div className="text-0.5xl sm:text-xs font-bold text-amber-400 uppercase tracking-wider mt-0.5">
               Skilled Engineers
             </div>
           </div>
@@ -139,7 +139,7 @@ export default function Hero() {
             className="p-2 sm:p-4 rounded-xl border border-white/15 shadow-xl hover:border-amber-500/50 transition-colors duration-200"
           >
             <div className="font-display text-base sm:text-3xl font-extrabold text-amber-400">BESCOM</div>
-            <div className="text-2xl sm:text-xs font-bold text-white uppercase tracking-wider mt-0.5">
+            <div className="text-0.5xl sm:text-xs font-bold text-white uppercase tracking-wider mt-0.5">
               Empanelled Dept.
             </div>
           </div>
