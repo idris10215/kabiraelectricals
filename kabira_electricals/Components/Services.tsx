@@ -60,7 +60,7 @@ export default function Services() {
         scrollTrigger: {
           trigger: section,
           pin: true,
-          start: "top top+=64px",
+          start: "top top+=20%",
           end: () => `+=${totalWidth}`,
           scrub: 1,
           anticipatePin: 1,

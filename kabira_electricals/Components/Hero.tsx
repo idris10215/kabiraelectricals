@@ -91,7 +91,7 @@ export default function Hero() {
         {/* Main Headline */}
         <h1
           ref={titleRef}
-          className="font-display text-2.5xl sm:text-5xl lg:text-6xl font-extrabold uppercase leading-tight sm:leading-[1.05] tracking-tight text-white drop-shadow-2xl"
+          className="font-display text-2.5xl sm:text-7xl lg:text-6xl font-extrabold uppercase leading-tight sm:leading-[1.05] tracking-tight text-white drop-shadow-2xl"
         >
           Powering Corporate &{" "}
           <span className="text-amber-500">Industrial Success</span>
@@ -100,7 +100,7 @@ export default function Hero() {
         {/* Detailed Paragraph */}
         <p
           ref={paraRef}
-          className="max-w-2xl text-xs sm:text-sm lg:text-base leading-relaxed text-slate-200 font-normal drop-shadow-md"
+          className="max-w-2xl sm:text-4xl lg:text-base leading-relaxed text-slate-200 font-normal drop-shadow-md"
         >
           With Kabira Electricals, empower your business for long-term operational success. As leading Class 1 electrical contractors in Bangalore, our quality-driven approach ensures flawless execution of complex HT works, transformer works, and turnkey KPTCL projects — from BESCOM load enhancement to CEIG safety clearances.
         </p>
@@ -114,10 +114,9 @@ export default function Hero() {
             className="p-3 sm:p-4 rounded-xl border border-white/15 shadow-xl hover:border-amber-500/50 transition-colors duration-200 hover:bg-slate-950/75"
           >
             <div className="font-display text-lg sm:text-3xl font-extrabold text-white">44+</div>
-            <div className="text-[9px] sm:text-xs font-bold text-amber-400 uppercase tracking-wider mt-0.5 sm:mt-1">
+            <div className="text-[9px] sm:text-2xl font-bold text-amber-400 uppercase tracking-wider mt-0.5 sm:mt-1">
               Executed Projects
             </div>
-            <div className="text-[8px] sm:text-[10px] text-slate-300 mt-0.5">HT/LT Infrastructure</div>
           </div>
 
           <div
@@ -125,10 +124,9 @@ export default function Hero() {
             className="p-3 sm:p-4 rounded-xl border border-white/15 shadow-xl hover:border-amber-500/50 transition-colors duration-200 hover:bg-slate-950/75"
           >
             <div className="font-display text-lg sm:text-3xl font-extrabold text-white">15+</div>
-            <div className="text-[9px] sm:text-xs font-bold text-amber-400 uppercase tracking-wider mt-0.5 sm:mt-1">
+            <div className="text-[9px] sm:text-2xl font-bold text-amber-400 uppercase tracking-wider mt-0.5 sm:mt-1">
               Years Experience
             </div>
-            <div className="text-[8px] sm:text-[10px] text-slate-300 mt-0.5">Govt. Certified Team</div>
           </div>
 
           <div
@@ -136,10 +134,9 @@ export default function Hero() {
             className="p-3 sm:p-4 rounded-xl border border-white/15 shadow-xl hover:border-amber-500/50 transition-colors duration-200 hover:bg-slate-950/75"
           >
             <div className="font-display text-lg sm:text-3xl font-extrabold text-white">100+</div>
-            <div className="text-[9px] sm:text-xs font-bold text-amber-400 uppercase tracking-wider mt-0.5 sm:mt-1">
+            <div className="text-[9px] sm:text-2xl font-bold text-amber-400 uppercase tracking-wider mt-0.5 sm:mt-1">
               Skilled Engineers
             </div>
-            <div className="text-[8px] sm:text-[10px] text-slate-300 mt-0.5">Certified Technicians</div>
           </div>
 
           <div
@@ -147,10 +144,9 @@ export default function Hero() {
             className="p-3 sm:p-4 rounded-xl border border-white/15 shadow-xl hover:border-amber-500/50 transition-colors duration-200 hover:bg-slate-950/75"
           >
             <div className="font-display text-lg sm:text-3xl font-extrabold text-amber-400">BESCOM</div>
-            <div className="text-[9px] sm:text-xs font-bold text-white uppercase tracking-wider mt-0.5 sm:mt-1">
+            <div className="text-[9px] sm:text-2xl font-bold text-white uppercase tracking-wider mt-0.5 sm:mt-1">
               Empanelled Dept.
             </div>
-            <div className="text-[8px] sm:text-[10px] text-slate-300 mt-0.5">Fast-Track Approvals</div>
           </div>
         </div>
 
