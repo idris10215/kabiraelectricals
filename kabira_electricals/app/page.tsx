@@ -16,19 +16,19 @@ export default function Home() {
       </ScrollVideoWrapper>
 
       {/* 2. Services Section */}
-      <Services />
+      {/* <Services /> */}
 
       {/* 3. Featured Executed Projects Section (with Learn More CTA to /projects) */}
-      <Projects />
+      {/* <Projects /> */}
 
       {/* 4. About Us Section (with Learn More CTA to /about) */}
-      <About />
+      {/* <About /> */}
 
       {/* 5. Contact Consultation Form Section */}
-      <Contact />
+      {/* <Contact /> */}
 
       {/* 6. Footer */}
-      <Footer />
+      {/* <Footer /> */}
     </main>
   );
 }
