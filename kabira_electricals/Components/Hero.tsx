@@ -77,7 +77,7 @@ export default function Hero() {
       <div className="space-y-2 sm:space-y-4 w-full">
         {/* Govt. License Badge */}
         <div ref={badgeRef}>
-          <div className="inline-flex items-center gap-1.5 rounded-full border border-amber-500/50 bg-slate-950/70 px-2.5 py-0.5 sm:px-4 sm:py-2 text-[10px] sm:text-xs font-semibold uppercase tracking-wider text-amber-300 backdrop-blur-md shadow-xl">
+          <div className="inline-flex items-center gap-1.5 border border-amber-500/50 bg-slate-950/70 px-2.5 py-0.5 sm:px-4 sm:py-2 text-[10px] sm:text-xs font-semibold uppercase tracking-wider text-amber-300 backdrop-blur-md shadow-xl">
             <ShieldCheck className="w-3 h-3 sm:w-4 sm:h-4 text-amber-400 shrink-0" />
             <span>Govt. Licensed Class 1 Electrical Contractor</span>
           </div>
@@ -93,11 +93,12 @@ export default function Hero() {
         </h1>
 
         {/* Paragraph (Fixed mobile font size & clamp) */}
+        {/* Paragraph (Clean, Professional Typography) */}
         <p
           ref={paraRef}
-          className="max-w-2xl text-1xl sm:text-base leading-snug sm:leading-relaxed text-slate-200 font-normal drop-shadow-md "
+          className="max-w-xl text-sm sm:text-base lg:text-lg font-semibold leading-normal text-slate-200 tracking-wide drop-shadow"
         >
-          With Kabira Electricals, empower your business for long-term operational success. As leading Class 1 electrical contractors in Bangalore, our quality-driven approach ensures flawless execution of complex HT works, transformer works, and turnkey KPTCL projects.
+          Empower your business for long-term operational success. As leading Class 1 electrical contractors in Bangalore, our quality-driven approach ensures flawless execution of complex HT works, transformer installations, and turnkey KPTCL projects.
         </p>
       </div>
 
@@ -106,40 +107,40 @@ export default function Hero() {
         <div className="w-full grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-4">
           <div
             ref={card1Ref}
-            className="p-2 sm:p-4 rounded-xl border border-white/15 shadow-xl hover:border-amber-500/50 transition-colors duration-200"
+            className="p-2 sm:p-4 border border-white/15 shadow-xl hover:border-amber-500/50 transition-colors duration-200"
           >
             <div className="font-display text-base sm:text-3xl font-extrabold text-white">44+</div>
-            <div className="text-0.5xl sm:text-xs font-bold text-amber-400 uppercase tracking-wider mt-0.5">
+            <div className="text-1xl sm:text-xs font-bold text-amber-400 uppercase tracking-wider mt-0.5">
               Executed Projects
             </div>
           </div>
 
           <div
             ref={card2Ref}
-            className="p-2 sm:p-4 rounded-xl border border-white/15 shadow-xl hover:border-amber-500/50 transition-colors duration-200"
+            className="p-2 sm:p-4 border border-white/15 shadow-xl hover:border-amber-500/50 transition-colors duration-200"
           >
             <div className="font-display text-base sm:text-3xl font-extrabold text-white">15+</div>
-            <div className="text-0.5xl sm:text-xs font-bold text-amber-400 uppercase tracking-wider mt-0.5">
+            <div className="text-1xl sm:text-xs font-bold text-amber-400 uppercase tracking-wider mt-0.5">
               Years Experience
             </div>
           </div>
 
           <div
             ref={card3Ref}
-            className="p-2 sm:p-4 rounded-xl border border-white/15 shadow-xl hover:border-amber-500/50 transition-colors duration-200"
+            className="p-2 sm:p-4  border border-white/15 shadow-xl hover:border-amber-500/50 transition-colors duration-200"
           >
             <div className="font-display text-base sm:text-3xl font-extrabold text-white">100+</div>
-            <div className="text-0.5xl sm:text-xs font-bold text-amber-400 uppercase tracking-wider mt-0.5">
+            <div className="text-1xl sm:text-xs font-bold text-amber-400 uppercase tracking-wider mt-0.5">
               Skilled Engineers
             </div>
           </div>
 
           <div
             ref={card4Ref}
-            className="p-2 sm:p-4 rounded-xl border border-white/15 shadow-xl hover:border-amber-500/50 transition-colors duration-200"
+            className="p-2 sm:p-4  border border-white/15 shadow-xl hover:border-amber-500/50 transition-colors duration-200"
           >
-            <div className="font-display text-base sm:text-3xl font-extrabold text-amber-400">BESCOM</div>
-            <div className="text-0.5xl sm:text-xs font-bold text-white uppercase tracking-wider mt-0.5">
+            <div className="font-display text-base sm:text-3xl font-extrabold text-white ">BESCOM</div>
+            <div className="text-1xl sm:text-xs font-bold text-amber-400 uppercase tracking-wider mt-0.5">
               Empanelled Dept.
             </div>
           </div>
@@ -149,7 +150,7 @@ export default function Hero() {
         <div ref={ctaRef} className="pt-0.5">
           <a
             href="#contact"
-            className="inline-flex items-center gap-2 rounded-xl bg-amber-500 hover:bg-amber-400 px-4 py-2 sm:px-8 sm:py-3.5 font-extrabold text-slate-950 transition-transform duration-200 shadow-2xl text-xs sm:text-sm tracking-wider uppercase transform hover:scale-105"
+            className="inline-flex items-center gap-2 rounded-full bg-amber-500 hover:bg-amber-400 px-4 py-2 sm:px-8 sm:py-3.5 font-extrabold text-slate-950 transition-transform duration-200 shadow-2xl text-xs sm:text-sm tracking-wider uppercase transform hover:scale-105"
           >
             <span>Get a Quote</span>
             <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4" />

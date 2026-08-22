@@ -18,22 +18,22 @@ interface ServicePillar {
 const servicePillars: ServicePillar[] = [
   {
     id: "electrical-contracting",
-    title: "HT / LT Electrical Contracting & Substation Works",
+    title: "Electrical H.T / L.T Projects & Contracting",
     image: "/left_transformer.jpg",
   },
   {
     id: "bescom-works",
-    title: "BESCOM Load Enhancement & Sanctions",
+    title: "BESCOM Works & Liasioning Services",
     image: "/right_building.jpg",
   },
   {
     id: "kptcl-works",
-    title: "KPTCL Turnkey Substation Works",
+    title: "KPTCL Turnkey Works & Substation Erection",
     image: "/substation_source.jpg",
   },
   {
-    id: "ceig-approvals",
-    title: "CEIG Safety Clearances & Approvals",
+    id: "ceig-work",
+    title: "CEIG Work (Safety Clearances & Approvals)",
     image: "/corporate_towers.jpg",
   },
 ];
@@ -101,8 +101,8 @@ export default function Services() {
             {servicePillars.map((pillar) => (
               <Link
                 key={pillar.id}
-                href="/services"
-                className="group relative min-w-[260px] sm:min-w-[300px] lg:min-w-0 h-80 sm:h-96 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border border-slate-200 flex flex-col justify-end p-5 sm:p-6 shrink-0 transform hover:-translate-y-2"
+                href={`/services/${pillar.id}`}
+                className="group relative min-w-[260px] sm:min-w-[300px] lg:min-w-0 h-80 sm:h-96 overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border border-slate-200 flex flex-col justify-end p-5 sm:p-6 shrink-0 transform hover:-translate-y-2"
               >
                 {/* Background Image */}
                 <Image

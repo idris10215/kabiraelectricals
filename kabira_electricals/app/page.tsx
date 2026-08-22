@@ -11,12 +11,12 @@ export default function Home() {
   return (
     <main className="bg-slate-950 text-slate-100 min-h-screen">
       {/* 1. Hero Section with Background Video */}
-      <ScrollVideoWrapper videoSrc="/videos/kling-test.mp4">
+      <ScrollVideoWrapper videoSrc="/videos/kling-video.mp4">
         <Hero />
       </ScrollVideoWrapper>
 
       {/* 2. Services Section */}
-      {/* <Services /> */}
+      <Services />
 
       {/* 3. Featured Executed Projects Section (with Learn More CTA to /projects) */}
       {/* <Projects /> */}
