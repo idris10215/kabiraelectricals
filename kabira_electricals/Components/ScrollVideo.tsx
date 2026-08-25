@@ -23,7 +23,7 @@ export default function ScrollVideoWrapper({ children, videoSrc }: Props) {
 
       {/* 2. Premium Dark Gradient Overlay */}
       {/* <div className="absolute inset-0 bg-gradient-to-b from-slate-950/85 via-slate-950/60 to-slate-950/90 z-10 pointer-events-none" /> */}
-      <div className="absolute inset-0 bg-gradient-to-b from-slate-950/50 via-slate-950/30 to-slate-950/60 z-10 pointer-events-none" />
+      {/* <div className="absolute inset-0 bg-gradient-to-b from-slate-950/50 via-slate-950/30 to-slate-950/60 z-10 pointer-events-none" /> */}
 
       {/* 3. Hero Content Container */}
       <div className="relative z-20 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-center">
