@@ -19,7 +19,7 @@ export const servicesData: ServiceItem[] = [
     shortTitle: "H.T / L.T Electrical Projects",
     category: "Class 1 Electrical Contracting",
     badge: "Govt. Class 1 Licensed",
-    image: "/left_transformer.jpg",
+    image: "/electrical_contracting.jpg",
     summary:
       "M/s Kabira Electricals provides complete end-to-end High Tension (H.T) and Low Tension (L.T) electrical installations, H.T cable termination, overhead line erection, and switchgear panel works for commercial buildings, hospitals, housing, hotels, and industrial facilities across Karnataka.",
     scope: [
@@ -42,7 +42,7 @@ export const servicesData: ServiceItem[] = [
     shortTitle: "BESCOM Liasioning Services",
     category: "BESCOM Departmental Approvals",
     badge: "BESCOM Empanelled Liasioning",
-    image: "/right_building.jpg",
+    image: "/bescom_works.webp",
     summary:
       "Official departmental representation and fast-track processing of all BESCOM sanctions, technical approvals, drawing approvals, and power agreements for commercial, industrial, and residential projects in Bangalore.",
     scope: [
@@ -64,7 +64,7 @@ export const servicesData: ServiceItem[] = [
     shortTitle: "BESCOM Load Enhancement",
     category: "Power Capacity Upgradation",
     badge: "BESCOM Power Sanctions",
-    image: "/corporate_towers.jpg",
+    image: "/bescom_load_enhancement.jpg",
     summary:
       "Official processing and turnkey infrastructure execution for BESCOM load enhancement and capacity expansion required by expanding commercial complexes, IT parks, and industrial units.",
     scope: [
@@ -86,7 +86,7 @@ export const servicesData: ServiceItem[] = [
     shortTitle: "BESCOM Load Reduction",
     category: "Tariff & Demand Optimization",
     badge: "Fixed Demand Charge Reduction",
-    image: "/substation_source.jpg",
+    image: "/bescom_load_reduction.jpg",
     summary:
       "Official processing for reduction of contracted BESCOM power load to optimize monthly electricity tariffs and eliminate unnecessary fixed demand charges for businesses.",
     scope: [
@@ -108,7 +108,7 @@ export const servicesData: ServiceItem[] = [
     shortTitle: "KPTCL Turnkey Works",
     category: "Karnataka Power Transmission",
     badge: "KPTCL Turnkey Projects",
-    image: "/substation_source.jpg",
+    image: "/kptcl_works.png",
     summary:
       "Execution of turnkey KPTCL substation works, high-voltage transmission line erection, bay line extensions, and industrial power evacuation systems across Karnataka.",
     scope: [
@@ -130,7 +130,7 @@ export const servicesData: ServiceItem[] = [
     shortTitle: "Transformer Erection & Testing",
     category: "Substation Infrastructure",
     badge: "Transformer Specialists",
-    image: "/left_transformer.jpg",
+    image: "/transformer_works.jpg",
     summary:
       "Specialized erection, oil filtration, testing, and commissioning of oil-cooled and dry-type power and distribution transformers for commercial and industrial establishments.",
     scope: [
@@ -152,7 +152,7 @@ export const servicesData: ServiceItem[] = [
     shortTitle: "CEIG Safety Approvals",
     category: "Statutory Inspection NOC",
     badge: "CEIG Safety Clearances",
-    image: "/corporate_towers.jpg",
+    image: "/ceig_work.jpg",
     summary:
       "Mandatory statutory approvals and safety inspection NOCs from the Chief Electrical Inspectorate to Government (CEIG) of Karnataka prior to high-voltage grid energization.",
     scope: [
@@ -174,7 +174,7 @@ export const servicesData: ServiceItem[] = [
     shortTitle: "Arranging Power Supply",
     category: "Grid Power Procurement",
     badge: "Turnkey Power Solutions",
-    image: "/right_building.jpg",
+    image: "/arranging_power.jpg",
     summary:
       "Arranging temporary and permanent power supply sanctions for new construction sites, commercial developments, and Solar Rooftop (SRTPV) grid connectivity across Karnataka.",
     scope: [

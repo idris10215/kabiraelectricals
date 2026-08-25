@@ -129,9 +129,9 @@ export default function Hero() {
             ref={card3Ref}
             className="p-2 sm:p-4  border border-white/15 shadow-xl hover:border-amber-500/50 transition-colors duration-200"
           >
-            <div className="font-display text-base sm:text-3xl font-extrabold text-white">100+</div>
+            <div className="font-display text-base sm:text-3xl font-extrabold text-white">CLASS 1</div>
             <div className="text-1xl sm:text-xs font-bold text-amber-400 uppercase tracking-wider mt-0.5">
-              Skilled Engineers
+              Licensed Engineers
             </div>
           </div>
 

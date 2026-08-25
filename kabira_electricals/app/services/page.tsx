@@ -13,7 +13,7 @@ export const metadata = {
 
 export default function ServicesPage() {
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 font-sans">
+    <div className="min-h-screen  text-slate-100 font-sans">
       <Navbar />
 
       {/* Hero Banner */}
