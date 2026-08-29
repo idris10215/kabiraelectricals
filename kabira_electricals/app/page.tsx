@@ -19,7 +19,7 @@ export default function Home() {
       <Services />
 
       {/* 3. Featured Executed Projects Section (with Learn More CTA to /projects) */}
-      {/* <Projects /> */}
+      <Projects />
 
       {/* 4. About Us Section (with Learn More CTA to /about) */}
       {/* <About /> */}

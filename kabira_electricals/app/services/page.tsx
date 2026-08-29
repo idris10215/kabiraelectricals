@@ -62,12 +62,12 @@ export default function ServicesPage() {
               <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/50 to-transparent z-10" />
 
               {/* Top Category Badge */}
-              <div className="absolute top-4 left-4 z-20">
+              {/* <div className="absolute top-4 left-4 z-20">
                 <span className="inline-flex items-center gap-1.5 bg-slate-950/90 border border-amber-500/40 text-amber-400 text-[10px] font-extrabold px-3 py-1 uppercase tracking-widest shadow-md">
                   <ShieldCheck className="w-3.5 h-3.5" />
                   {service.badge}
                 </span>
-              </div>
+              </div> */}
 
               {/* Card Title & CTA */}
               <div className="relative z-20 space-y-3">

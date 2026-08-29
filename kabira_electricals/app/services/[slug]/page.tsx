@@ -58,14 +58,14 @@ export default async function SingleServicePage({ params }: PageProps) {
           </Link>
 
           <div className="space-y-3">
-            <div className="inline-flex items-center gap-2 border border-amber-500/40 bg-slate-950 px-3.5 py-1 text-xs font-semibold uppercase tracking-wider text-amber-300">
+            {/* <div className="inline-flex items-center gap-2 border border-amber-500/40 bg-slate-950 px-3.5 py-1 text-xs font-semibold uppercase tracking-wider text-amber-300">
               <ShieldCheck className="w-4 h-4 text-amber-400" />
               <span>{service.badge}</span>
-            </div>
+            </div> */}
 
-            <div className="text-xs font-bold uppercase tracking-widest text-amber-500">
+            {/* <div className="text-xs font-bold uppercase tracking-widest text-amber-500">
               {service.category}
-            </div>
+            </div> */}
 
             <h1 className="font-display text-3xl sm:text-5xl lg:text-6xl font-extrabold uppercase tracking-tight text-white">
               {service.title}
@@ -77,7 +77,7 @@ export default async function SingleServicePage({ params }: PageProps) {
       {/* Main Detail Section for ONLY THIS SERVICE */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 space-y-16">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-stretch">
-          
+
           {/* Left Side: Large Visual Banner (Stretched to match right card height) */}
           <div className="lg:col-span-5 relative min-h-[320px] sm:min-h-[400px] h-full w-full border border-slate-800 overflow-hidden bg-slate-900 shadow-2xl">
             <Image

@@ -2,120 +2,169 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { Award, ArrowRight, Building2, ShieldCheck, MapPin } from "lucide-react";
-import ClientLogos from "@/Components/ClientLogos";
+import { ArrowRight } from "lucide-react";
 
-interface FeaturedProject {
+interface ProjectClient {
   id: string;
-  title: string;
-  category: string;
+  name: string;
   location: string;
-  scope: string;
-  image?: string;
+  workType: string;
+  logo?: string;
 }
 
-const featuredProjects: FeaturedProject[] = [
+const clientProjects: ProjectClient[] = [
   {
-    id: "marriott",
-    title: "Court Yard Marriott",
-    category: "HT Substation & Panels",
-    location: "Outer Ring Road, Marathahalli, Bangalore",
-    scope: "Turnkey High-Voltage Power Substation, Transformer Erection & Main LT Distribution Panel Works",
-    image: "/commercial_buildings.jpg",
+    id: "act",
+    name: "ACT FIBERNET",
+    location: "Bangalore",
+    workType: "L.T Network Infrastructure",
+    logo: "/act_fibernet.svg",
   },
   {
     id: "embassy",
-    title: "Embassy Tech Village",
-    category: "HT Distribution & CEIG NOC",
+    name: "EMBASSY TECH VILLAGE",
     location: "Marathahalli, Bangalore",
-    scope: "HT Underground Cable Laying, Ring Main Unit (RMU) & CEIG Safety Inspectorate Clearances",
-    image: "/corporate_towers.jpg",
+    workType: "H.T Substation & Cables",
+    logo: "/embassy_tech_village.svg",
+  },
+  {
+    id: "meghana",
+    name: "MEGHNAS FOOD",
+    location: "Koramangala, Bangalore",
+    workType: "H.T / L.T Electricals",
+    logo: "/meghana_foods.svg",
+  },
+  {
+    id: "drls",
+    name: "DRLS PALACE BANQUET HALL",
+    location: "Shetty Halli, Jalahalli",
+    workType: "H.T Power Substation",
+    logo: "/drls_palace.svg",
+  },
+  {
+    id: "narmada",
+    name: "NARMADA RESTAURANTS",
+    location: "Koramangala, Bangalore",
+    workType: "H.T Power Works",
+    logo: "/narmada.svg",
+  },
+  {
+    id: "marriott",
+    name: "COURT YARD MARRIOTT",
+    location: "Outer Ring Road, Marathahalli",
+    workType: "H.T Power Substation",
   },
   {
     id: "supreme",
-    title: "Supreme Constructions",
-    category: "Commercial Electrical Engineering",
+    name: "SUPREME CONSTRUCTIONS",
     location: "Frazer Town, Bangalore",
-    scope: "Complete Commercial Building Power Infrastructure & BESCOM Load Sanction Approval",
-    image: "/power_substation.jpg",
+    workType: "H.T / L.T Commercial Works",
+  },
+  {
+    id: "ngs",
+    name: "NGS GROUPS",
+    location: "Basavangudi, Bangalore",
+    workType: "H.T Electrical Works",
+  },
+  {
+    id: "rainbow",
+    name: "RAINBOW APARTMENTS",
+    location: "Bannerghatta Road, Bangalore",
+    workType: "H.T Distribution",
+  },
+  {
+    id: "gm_agency",
+    name: "GM AGENCY (TRENDS SHOWROOM)",
+    location: "Channagiri, Davanagere Dist",
+    workType: "H.T Commercial Works",
+  },
+  {
+    id: "diascope",
+    name: "DIASCOPE HEALTHCARE",
+    location: "Wilson Garden, Bangalore",
+    workType: "L.T Medical Infrastructure",
+  },
+  {
+    id: "ibps",
+    name: "IBPS WATER PLANT",
+    location: "Mysore Pinjarapole",
+    workType: "H.T Industrial Substation",
   },
 ];
 
 export default function Projects() {
+  // Duplicate array for infinite seamless looping
+  const marqueeItems = [...clientProjects, ...clientProjects];
+
   return (
-    <section id="projects" className="py-20 sm:py-28 px-4 sm:px-6 lg:px-8 bg-slate-900 text-white border-t border-slate-800">
-      <div className="max-w-7xl mx-auto space-y-16">
+    <section id="projects" className="py-12 sm:py-16 bg-slate-50 text-slate-900 border-t border-slate-200 overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
         
-        {/* Trusted Partners & Empanelled Utilities Logos */}
-        <ClientLogos />
-
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto space-y-4">
-          <div className="inline-flex items-center gap-2 rounded-full border border-amber-500/40 bg-slate-950 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-amber-300 shadow-lg">
-            <Award className="w-4 h-4 text-amber-400" />
-            <span>Proven Engineering Track Record</span>
-          </div>
-
-          <h2 className="font-display text-3xl sm:text-5xl font-extrabold tracking-tight uppercase">
-            Featured <span className="text-amber-500">Executed Projects</span>
+        <div className="text-center max-w-3xl mx-auto space-y-2">
+          <h2 className="font-display text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight uppercase">
+            Powering Infrastructure For <span className="text-amber-600">Industry Leaders & Corporate Hubs</span>
           </h2>
 
-          <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
-            Over 44+ major HT/LT electrical engineering projects delivered for leading corporate tech parks, luxury hotels, and commercial hubs across Bangalore.
+          <p className="text-slate-600 text-sm sm:text-base leading-relaxed font-normal">
+            Delivering high-voltage electrical installations, substation erection, and BESCOM clearances for Karnataka's top corporate tech parks, luxury hospitality, and commercial brands.
           </p>
         </div>
 
-        {/* Featured Projects Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
-          {featuredProjects.map((project) => (
-            <div
-              key={project.id}
-              className="group relative bg-slate-950 rounded-2xl border border-slate-800 hover:border-amber-500/50 overflow-hidden shadow-xl transition-all duration-300 flex flex-col justify-between"
-            >
-              {/* Image Header */}
-              {project.image && (
-                <div className="relative h-48 w-full overflow-hidden bg-slate-900">
-                  <Image
-                    src={project.image}
-                    alt={project.title}
-                    fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-500 brightness-90 group-hover:brightness-100"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent" />
-                  <div className="absolute top-3 left-3">
-                    <span className="bg-amber-500 text-slate-950 text-[10px] font-extrabold px-3 py-1 rounded-full uppercase tracking-wider shadow-md">
-                      {project.category}
-                    </span>
+        {/* Clean Logo & Brand Name Marquee Container */}
+        <div className="relative w-full overflow-hidden py-8 border-y border-slate-200 bg-white">
+          
+          {/* Subtle Left & Right Fade Gradients */}
+          <div className="absolute top-0 bottom-0 left-0 w-16 sm:w-28 bg-gradient-to-r from-white to-transparent z-20 pointer-events-none" />
+          <div className="absolute top-0 bottom-0 right-0 w-16 sm:w-28 bg-gradient-to-l from-white to-transparent z-20 pointer-events-none" />
+
+          {/* Continuous Moving Track */}
+          <div className="animate-marquee items-center gap-14 sm:gap-20">
+            {marqueeItems.map((project, index) => (
+              <div
+                key={`${project.id}-${index}`}
+                className="flex flex-col items-center justify-center space-y-2 shrink-0"
+              >
+                {/* Pure Colorful Logo (If Available) */}
+                {project.logo ? (
+                  <>
+                    <div className="relative w-44 h-16 sm:w-56 sm:h-20 flex items-center justify-center">
+                      <Image
+                        src={project.logo}
+                        alt={project.name}
+                        fill
+                        className="object-contain"
+                      />
+                    </div>
+                    {/* Location Only Below Logo */}
+                    <div className="text-xs font-semibold text-slate-500 tracking-wide">
+                      {project.location}
+                    </div>
+                  </>
+                ) : (
+                  /* Clean Text-Branded Item (If No Logo) */
+                  <div className="text-center space-y-1 px-4">
+                    <div className="font-extrabold text-sm sm:text-base text-slate-900 tracking-wide uppercase">
+                      {project.name}
+                    </div>
+                    <div className="text-xs font-semibold text-slate-500">
+                      {project.location}
+                    </div>
                   </div>
-                </div>
-              )}
-
-              {/* Card Details */}
-              <div className="p-6 space-y-3">
-                <h3 className="text-xl font-bold text-white group-hover:text-amber-400 transition-colors">
-                  {project.title}
-                </h3>
-                
-                <div className="flex items-start gap-1.5 text-xs text-slate-400">
-                  <MapPin className="w-3.5 h-3.5 text-amber-400 shrink-0 mt-0.5" />
-                  <span>{project.location}</span>
-                </div>
-
-                <p className="text-xs text-slate-300 leading-relaxed pt-2 border-t border-slate-800">
-                  {project.scope}
-                </p>
+                )}
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
+
         </div>
 
-        {/* Learn More / View All Projects Button */}
-        <div className="text-center pt-4">
+        {/* Explore All Sector Projects CTA Button */}
+        <div className="text-center pt-2">
           <Link
             href="/projects"
-            className="inline-flex items-center gap-3 bg-amber-500 hover:bg-amber-400 text-slate-950 px-8 py-4 rounded-full font-extrabold text-xs sm:text-sm uppercase tracking-wider transition-all duration-300 shadow-2xl hover:scale-105 transform"
+            className="inline-flex items-center gap-3 bg-slate-900 hover:bg-amber-500 text-white hover:text-slate-950 px-8 py-4 rounded-full font-extrabold text-xs sm:text-sm uppercase tracking-wider transition-all duration-300 shadow-xl hover:scale-105 transform"
           >
-            <span>Explore All Executed Projects</span>
+            <span>Explore All Sector Projects</span>
             <ArrowRight className="w-4 h-4" />
           </Link>
         </div>

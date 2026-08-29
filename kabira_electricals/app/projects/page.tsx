@@ -1,79 +1,22 @@
 import Navbar from "@/Components/Navbar";
 import Footer from "@/Components/Footer";
-import Image from "next/image";
 import Link from "next/link";
-import { Award, ShieldCheck, MapPin, ArrowLeft, ArrowRight, CheckCircle2 } from "lucide-react";
+import { ArrowLeft, ArrowRight } from "lucide-react";
+import { corporateSectorsData, privateEstatesSummaryData } from "@/data/projects";
 
 export const metadata = {
-  title: "Executed Projects | Kabira Electricals",
-  description: "Explore 44+ turnkey HT/LT electrical engineering projects executed by Kabira Electricals across Bangalore and Karnataka.",
+  title: "Executed Projects Portfolio | Kabira Electricals",
+  description: "Official sector showcase of turnkey HT/LT electrical engineering projects executed by Kabira Electricals across Karnataka.",
 };
-
-const allProjects = [
-  {
-    id: "marriott",
-    title: "Court Yard Marriott",
-    category: "Turnkey HT Installation & Panels",
-    location: "Outer Ring Road, Marathahalli, Bangalore",
-    scope: "High-Voltage Power Substation, Transformer Erection, Main LT Distribution Panel & DG Synchronization.",
-    highlights: ["11kV Transformer Installation", "CEIG Safety Approval", "24/7 Power Backup Synchronizing"],
-    image: "/commercial_buildings.jpg",
-  },
-  {
-    id: "embassy",
-    title: "Embassy Tech Village",
-    category: "HT Substation & Cable Laying",
-    location: "Marathahalli, Bangalore",
-    scope: "HT Underground Cable Trenching, Ring Main Unit (RMU) Switchgear & CEIG Clearance.",
-    highlights: ["HT Cable Jointing & Testing", "Substation Automation", "Fast-track Approvals"],
-    image: "/corporate_towers.jpg",
-  },
-  {
-    id: "supreme",
-    title: "Supreme Constructions",
-    category: "Commercial Electrical Engineering",
-    location: "Frazer Town, Bangalore",
-    scope: "Complete Commercial Building Power Distribution & BESCOM Load Sanction Approval.",
-    highlights: ["BESCOM Load Sanction", "Internal & External Wiring", "Lightning Protection Systems"],
-    image: "/power_substation.jpg",
-  },
-  {
-    id: "hospital",
-    title: "Multi-Specialty Healthcare Hub",
-    category: "Medical Power Infrastructure",
-    location: "Bannerghatta Road, Bangalore",
-    scope: "Uninterrupted Power Supply (UPS) Panels, ICU Isolation Power & Emergency Substation Erection.",
-    highlights: ["Clean Room Power Isolation", "Dual Transformer Redundancy", "CEIG Clearance"],
-    image: "/left_transformer.jpg",
-  },
-  {
-    id: "industrial",
-    title: "Peenya Industrial Manufacturing Complex",
-    category: "Industrial Power & Load Enhancement",
-    location: "Peenya Industrial Area, Bangalore",
-    scope: "Heavy Industrial Load Enhancement from 500kVA to 2000kVA with Dedicated KPTCL Bay Line.",
-    highlights: ["2000kVA Load Enhancement", "Dedicated Bay Line Works", "Power Factor Improvement"],
-    image: "/power_substation.jpg",
-  },
-  {
-    id: "housing",
-    title: "Luxury Residential Township",
-    category: "Residential HT/LT Distribution",
-    location: "Whitefield, Bangalore",
-    scope: "Underground LT Cable Distribution, Transformer Yard & Individual Smart Meter Panel Yards.",
-    highlights: ["Smart Metering Panels", "Underground Cable Networks", "BESCOM Individual Sanctions"],
-    image: "/corporate_towers.jpg",
-  },
-];
 
 export default function ProjectsPage() {
   return (
-    <main className="bg-slate-950 text-slate-100 min-h-screen">
+    <main className="bg-slate-50 text-slate-900 min-h-screen">
       <Navbar />
 
       {/* Page Hero Header */}
-      <section className="relative pt-32 pb-20 px-4 sm:px-6 lg:px-8 bg-slate-900 border-b border-slate-800">
-        <div className="max-w-7xl mx-auto space-y-6">
+      <section className="relative pt-28 sm:pt-32 pb-12 sm:pb-16 px-4 sm:px-6 lg:px-8 bg-slate-900 text-white border-b border-slate-800">
+        <div className="max-w-7xl mx-auto space-y-4">
           <Link
             href="/"
             className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-amber-400 hover:text-amber-300 transition-colors"
@@ -82,95 +25,93 @@ export default function ProjectsPage() {
             <span>Back to Home</span>
           </Link>
 
-          <div className="space-y-3">
-            <div className="inline-flex items-center gap-2 rounded-full border border-amber-500/40 bg-slate-950 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-amber-300">
-              <Award className="w-4 h-4 text-amber-400" />
-              <span>Portfolio of Excellence</span>
-            </div>
-
-            <h1 className="font-display text-4xl sm:text-6xl font-extrabold uppercase tracking-tight text-white">
-              Executed <span className="text-amber-500">Projects</span>
+          <div className="space-y-2">
+            <h1 className="font-display text-3xl sm:text-5xl lg:text-6xl font-extrabold uppercase tracking-tight text-white leading-tight">
+              Executed Projects <span className="text-amber-500">Sector Showcase</span>
             </h1>
 
-            <p className="max-w-3xl text-slate-300 text-base sm:text-lg leading-relaxed">
-              Explore our track record of over 44+ completed turnkey electrical projects across Karnataka, spanning corporate tech parks, 5-star hotels, healthcare hubs, and heavy industrial facilities.
+            <p className="max-w-3xl text-slate-300 text-xs sm:text-sm lg:text-base leading-relaxed font-normal">
+              A portfolio of turnkey HT/LT electrical engineering installations executed by Kabira Electricals across commercial, tech park, industrial, and healthcare sectors in Karnataka.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Projects Showcase Grid */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {allProjects.map((project) => (
+      {/* Main 4 Sector Grid Showcase */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-20 space-y-8 sm:space-y-12">
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+          {corporateSectorsData.map((sector) => (
             <div
-              key={project.id}
-              className="bg-slate-900 rounded-3xl border border-slate-800 hover:border-amber-500/50 overflow-hidden shadow-2xl transition-all duration-300 flex flex-col justify-between"
+              key={sector.id}
+              className="bg-white border border-slate-200 p-6 sm:p-8 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between space-y-6 sm:space-y-8 rounded-none"
             >
-              {/* Project Image Header */}
-              <div className="relative h-56 w-full overflow-hidden bg-slate-950">
-                <Image
-                  src={project.image}
-                  alt={project.title}
-                  fill
-                  className="object-cover hover:scale-105 transition-transform duration-500 brightness-90"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent" />
-                <div className="absolute top-4 left-4">
-                  <span className="bg-amber-500 text-slate-950 text-xs font-extrabold px-3.5 py-1 rounded-full uppercase tracking-wider shadow-lg">
-                    {project.category}
-                  </span>
+              {/* Sector Header */}
+              <div className="space-y-2 border-b border-slate-100 pb-4 sm:pb-6">
+                <h2 className="text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight leading-snug">
+                  {sector.category}
+                </h2>
+                <p className="text-[11px] sm:text-xs font-bold uppercase tracking-wider text-amber-600">
+                  {sector.tagline}
+                </p>
+              </div>
+
+              {/* Representative Client Brands */}
+              <div className="space-y-3">
+                <div className="text-[10px] sm:text-xs font-extrabold text-slate-400 uppercase tracking-widest">
+                  Key Client Establishments:
+                </div>
+                <div className="flex flex-wrap gap-2">
+                  {sector.clients.map((clientName, idx) => (
+                    <span
+                      key={idx}
+                      className="px-3 py-1.5 bg-slate-50 border border-slate-200 text-slate-900 text-xs font-bold shadow-2xs hover:border-amber-500/50 hover:bg-amber-50/50 transition-colors rounded-none"
+                    >
+                      {clientName}
+                    </span>
+                  ))}
                 </div>
               </div>
 
-              {/* Project Body */}
-              <div className="p-6 space-y-4 flex-grow flex flex-col justify-between">
-                <div className="space-y-2">
-                  <h2 className="text-2xl font-extrabold text-white">{project.title}</h2>
-                  <div className="flex items-center gap-1.5 text-xs text-amber-400">
-                    <MapPin className="w-3.5 h-3.5 shrink-0" />
-                    <span>{project.location}</span>
-                  </div>
-                  <p className="text-xs text-slate-300 leading-relaxed pt-2">
-                    {project.scope}
-                  </p>
-                </div>
-
-                {/* Highlights Bullet Points */}
-                <div className="pt-4 border-t border-slate-800 space-y-2">
-                  <div className="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Key Deliverables</div>
-                  <ul className="space-y-1.5 text-xs text-slate-300">
-                    {project.highlights.map((item, idx) => (
-                      <li key={idx} className="flex items-center gap-2">
-                        <CheckCircle2 className="w-3.5 h-3.5 text-amber-400 shrink-0" />
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
             </div>
           ))}
         </div>
 
-        {/* Bottom Contact Callout */}
-        <div className="p-8 sm:p-12 rounded-3xl bg-slate-900 border border-amber-500/30 text-center space-y-6">
-          <h3 className="font-display text-2xl sm:text-4xl font-extrabold text-white uppercase">
-            Have a Similar Electrical Project in Mind?
+        {/* Private Commercial & Residential Estates Summary Card */}
+        <div className="p-6 sm:p-8 bg-white border border-slate-200 shadow-sm space-y-4 rounded-none">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-100 pb-4">
+            <h3 className="text-lg sm:text-xl font-extrabold text-slate-900 tracking-tight">
+              {privateEstatesSummaryData.title}
+            </h3>
+            <span className="text-[10px] sm:text-xs font-extrabold text-amber-700 bg-amber-50 border border-amber-200 px-3 py-1 uppercase tracking-wider self-start sm:self-auto rounded-none">
+              {privateEstatesSummaryData.badge}
+            </span>
+          </div>
+
+          <p className="text-slate-600 text-xs sm:text-sm leading-relaxed font-normal">
+            {privateEstatesSummaryData.description}
+          </p>
+        </div>
+
+        {/* Executive Consultation Callout Banner */}
+        <div className="p-8 sm:p-12 bg-slate-900 text-white text-center space-y-6 shadow-2xl border border-slate-800 rounded-none">
+          <h3 className="font-display text-2xl sm:text-4xl font-extrabold uppercase tracking-tight">
+            Have a Similar Electrical Project Requirement?
           </h3>
-          <p className="text-slate-300 text-sm sm:text-base max-w-2xl mx-auto">
-            Get in touch with Kabira Electricals for turnkey substation design, BESCOM load enhancement, and CEIG safety approvals.
+          <p className="text-slate-300 text-xs sm:text-base max-w-2xl mx-auto font-normal leading-relaxed">
+            Contact Mr. Afzal Khan and our senior engineering team in Bangalore for turnkey substation design, BESCOM load enhancement, and CEIG safety clearances.
           </p>
           <div>
             <Link
               href="/#contact"
-              className="inline-flex items-center gap-2 bg-amber-500 hover:bg-amber-400 text-slate-950 font-extrabold text-xs sm:text-sm uppercase tracking-wider px-8 py-4 rounded-full shadow-2xl transition-transform hover:scale-105"
+              className="inline-flex items-center gap-2 bg-amber-500 hover:bg-amber-400 text-slate-950 font-extrabold text-xs sm:text-sm uppercase tracking-wider px-8 py-4 shadow-2xl transition-transform hover:scale-105 rounded-full"
             >
-              <span>Get a Turnkey Quotation</span>
+              <span>Request Turnkey Quotation</span>
               <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
         </div>
+
       </section>
 
       <Footer />
