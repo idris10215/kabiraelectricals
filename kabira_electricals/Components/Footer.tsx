@@ -8,7 +8,7 @@ export default function Footer() {
   return (
     <footer className="bg-slate-950 text-slate-400 text-xs border-t border-slate-800 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto space-y-8">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
           
           {/* Col 1: Branding */}
           <div className="space-y-3 md:col-span-1">
@@ -33,8 +33,8 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Col 2: Quick Links */}
-          <div className="space-y-3">
+          {/* Col 2: Quick Links (Hidden on small mobile screens to prevent clutter) */}
+          <div className="hidden sm:block space-y-3">
             <div className="font-bold text-white text-sm uppercase tracking-wider">Quick Links</div>
             <ul className="space-y-2">
               <li>
@@ -58,15 +58,15 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="#contact" className="hover:text-amber-400 transition-colors">
+                <Link href="/contact" className="hover:text-amber-400 transition-colors">
                   Contact Consultation
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* Col 3: Core Engineering Services */}
-          <div className="space-y-3">
+          {/* Col 3: Core Engineering Services (Hidden on small mobile screens to prevent clutter) */}
+          <div className="hidden sm:block space-y-3">
             <div className="font-bold text-white text-sm uppercase tracking-wider">Engineering Scope</div>
             <ul className="space-y-1.5 text-[11px]">
               <li>• Turnkey HT Substation & Panel Works</li>
@@ -84,7 +84,7 @@ export default function Footer() {
             <div className="space-y-2 text-[11px]">
               <div className="flex items-start gap-2">
                 <MapPin className="w-3.5 h-3.5 text-amber-400 shrink-0 mt-0.5" />
-                <span>No. 45, BHEL Officer Layout, SRK Garden, Bannerghatta Road, Bangalore - 560041</span>
+                <span>Frazer Town, Bangalore</span>
               </div>
               <div className="flex items-center gap-2">
                 <Phone className="w-3.5 h-3.5 text-amber-400 shrink-0" />

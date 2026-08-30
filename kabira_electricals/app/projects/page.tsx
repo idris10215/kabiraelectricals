@@ -93,7 +93,7 @@ export default function ProjectsPage() {
           </p>
         </div>
 
-        {/* Executive Consultation Callout Banner */}
+        {/* Executive Consultation Callout Banner -> Routes directly to /contact */}
         <div className="p-8 sm:p-12 bg-slate-900 text-white text-center space-y-6 shadow-2xl border border-slate-800 rounded-none">
           <h3 className="font-display text-2xl sm:text-4xl font-extrabold uppercase tracking-tight">
             Have a Similar Electrical Project Requirement?
@@ -103,7 +103,7 @@ export default function ProjectsPage() {
           </p>
           <div>
             <Link
-              href="/#contact"
+              href="/contact"
               className="inline-flex items-center gap-2 bg-amber-500 hover:bg-amber-400 text-slate-950 font-extrabold text-xs sm:text-sm uppercase tracking-wider px-8 py-4 shadow-2xl transition-transform hover:scale-105 rounded-full"
             >
               <span>Request Turnkey Quotation</span>
@@ -114,7 +114,7 @@ export default function ProjectsPage() {
 
       </section>
 
-      {/* <Footer /> */}
+      <Footer />
     </main>
   );
 }

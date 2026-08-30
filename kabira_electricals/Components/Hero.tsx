@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ArrowRight, ShieldCheck } from "lucide-react";
+import Link from "next/link";
 
 export default function Hero() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -83,7 +84,7 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Main Headline (Increased mobile font size) */}
+        {/* Main Headline */}
         <h1
           ref={titleRef}
           className="font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold uppercase leading-tight tracking-tight text-white drop-shadow-2xl"
@@ -92,8 +93,7 @@ export default function Hero() {
           <span className="text-amber-500">Industrial Success</span>
         </h1>
 
-        {/* Paragraph (Fixed mobile font size & clamp) */}
-        {/* Paragraph (Clean, Professional Typography) */}
+        {/* Paragraph */}
         <p
           ref={paraRef}
           className="max-w-xl text-sm sm:text-base lg:text-lg font-semibold leading-normal text-slate-200 tracking-wide drop-shadow"
@@ -127,7 +127,7 @@ export default function Hero() {
 
           <div
             ref={card3Ref}
-            className="p-2 sm:p-4  border border-white/15 shadow-xl hover:border-amber-500/50 transition-colors duration-200"
+            className="p-2 sm:p-4 border border-white/15 shadow-xl hover:border-amber-500/50 transition-colors duration-200"
           >
             <div className="font-display text-base sm:text-3xl font-extrabold text-white">CLASS 1</div>
             <div className="text-1xl sm:text-xs font-bold text-amber-400 uppercase tracking-wider mt-0.5">
@@ -137,24 +137,24 @@ export default function Hero() {
 
           <div
             ref={card4Ref}
-            className="p-2 sm:p-4  border border-white/15 shadow-xl hover:border-amber-500/50 transition-colors duration-200"
+            className="p-2 sm:p-4 border border-white/15 shadow-xl hover:border-amber-500/50 transition-colors duration-200"
           >
-            <div className="font-display text-base sm:text-3xl font-extrabold text-white ">BESCOM</div>
+            <div className="font-display text-base sm:text-3xl font-extrabold text-white">BESCOM</div>
             <div className="text-1xl sm:text-xs font-bold text-amber-400 uppercase tracking-wider mt-0.5">
               Empanelled Dept.
             </div>
           </div>
         </div>
 
-        {/* Primary CTA Button */}
+        {/* Primary CTA Button -> Directly routes to /contact */}
         <div ref={ctaRef} className="pt-0.5">
-          <a
-            href="#contact"
+          <Link
+            href="/contact"
             className="inline-flex items-center gap-2 rounded-full bg-amber-500 hover:bg-amber-400 px-4 py-2 sm:px-8 sm:py-3.5 font-extrabold text-slate-950 transition-transform duration-200 shadow-2xl text-xs sm:text-sm tracking-wider uppercase transform hover:scale-105"
           >
             <span>Get a Quote</span>
             <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
-          </a>
+          </Link>
         </div>
       </div>
     </div>

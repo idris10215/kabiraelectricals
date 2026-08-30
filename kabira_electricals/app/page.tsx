@@ -25,10 +25,10 @@ export default function Home() {
       <About />
 
       {/* 5. Contact Consultation Form Section */}
-      {/* <Contact /> */}
+      <Contact />
 
       {/* 6. Footer */}
-      {/* <Footer /> */}
+      <Footer />
     </main>
   );
 }

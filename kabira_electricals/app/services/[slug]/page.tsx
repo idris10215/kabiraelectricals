@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import Navbar from "@/Components/Navbar";
 import Footer from "@/Components/Footer";
 import { servicesData } from "@/data/services";
-import { ArrowLeft, ShieldCheck, CheckCircle2, PhoneCall, ArrowRight, Zap, Award } from "lucide-react";
+import { ArrowLeft, CheckCircle2, ArrowRight } from "lucide-react";
 
 interface PageProps {
   params: Promise<{
@@ -58,15 +58,6 @@ export default async function SingleServicePage({ params }: PageProps) {
           </Link>
 
           <div className="space-y-3">
-            {/* <div className="inline-flex items-center gap-2 border border-amber-500/40 bg-slate-950 px-3.5 py-1 text-xs font-semibold uppercase tracking-wider text-amber-300">
-              <ShieldCheck className="w-4 h-4 text-amber-400" />
-              <span>{service.badge}</span>
-            </div> */}
-
-            {/* <div className="text-xs font-bold uppercase tracking-widest text-amber-500">
-              {service.category}
-            </div> */}
-
             <h1 className="font-display text-3xl sm:text-5xl lg:text-6xl font-extrabold uppercase tracking-tight text-white">
               {service.title}
             </h1>
@@ -115,14 +106,14 @@ export default async function SingleServicePage({ params }: PageProps) {
               </ul>
             </div>
 
-            {/* Direct Consultation / Quote CTA */}
+            {/* Direct Consultation / Quote CTA -> Routes directly to /contact */}
             <div className="pt-6 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4">
               <div>
                 <div className="font-bold text-white text-sm">Need this service for your facility?</div>
                 <div className="text-xs text-slate-400">Get a turnkey quotation directly from Mr. Afzal Khan.</div>
               </div>
               <Link
-                href="/#contact"
+                href="/contact"
                 className="inline-flex items-center gap-2 px-6 py-3.5 bg-amber-500 hover:bg-amber-400 text-slate-950 font-extrabold text-xs uppercase tracking-wider transition-all shadow-lg shrink-0"
               >
                 <span>Request Quote</span>
@@ -135,7 +126,7 @@ export default async function SingleServicePage({ params }: PageProps) {
         </div>
       </main>
 
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 }

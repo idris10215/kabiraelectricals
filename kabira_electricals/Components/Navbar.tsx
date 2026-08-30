@@ -10,7 +10,6 @@ const navLinks = [
   { name: "Services", href: "/services" },
   { name: "Projects", href: "/projects" },
   { name: "About Us", href: "/about" },
-  { name: "Contact", href: "/#contact" },
 ];
 
 const Navbar = () => {
@@ -56,7 +55,7 @@ const Navbar = () => {
 
           {/* Desktop Quote Button */}
           <Link
-            href="#contact"
+            href="/contact"
             className="hidden md:inline-flex ml-4 px-6 py-2 rounded-full bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-sm transition-all shadow-md hover:scale-105 transform duration-200"
           >
             Get Quote
@@ -99,7 +98,7 @@ const Navbar = () => {
 
             <div className="pt-2 w-full">
               <Link
-                href="#contact"
+                href="/contact"
                 onClick={() => setmobileMenuOpen(false)}
                 className="inline-flex items-center justify-center gap-1.5 w-full px-4 py-2.5 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs uppercase tracking-wide shadow-md transition-all"
               >
