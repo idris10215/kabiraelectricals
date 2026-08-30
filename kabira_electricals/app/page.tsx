@@ -22,7 +22,7 @@ export default function Home() {
       <Projects />
 
       {/* 4. About Us Section (with Learn More CTA to /about) */}
-      {/* <About /> */}
+      <About />
 
       {/* 5. Contact Consultation Form Section */}
       {/* <Contact /> */}

@@ -1,85 +1,164 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import Image from "next/image";
-import Link from "next/link";
-import { ShieldCheck, CheckCircle2, ArrowRight, Award } from "lucide-react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+
+// Curated photos excluding gallery6
+const aboutGalleryPhotos = [
+  {
+    src: "/gallery1.jpeg",
+    title: "LT Switchboard Panel Wiring",
+  },
+  {
+    src: "/gallery2.jpeg",
+    title: "Metering Panel Audit & Testing",
+  },
+  {
+    src: "/gallery3.jpeg",
+    title: "Wall Chaser Conduit Channeling",
+  },
+  {
+    src: "/gallery4.jpeg",
+    title: "Outdoor RMU Substation Kiosk",
+  },
+  {
+    src: "/gallery5.jpeg",
+    title: "Transformer Yard Cable Jointing",
+  },
+  {
+    src: "/gallery7.jpeg",
+    title: "HT Cable Pot-Head Terminations",
+  },
+];
 
 export default function About() {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [itemsPerPage, setItemsPerPage] = useState(2);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 640) {
+        setItemsPerPage(1); // 1 card on mobile
+      } else {
+        setItemsPerPage(2); // 2 cards on laptop/desktop
+      }
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  const maxIndex = aboutGalleryPhotos.length - itemsPerPage;
+
+  const handlePrev = () => {
+    setCurrentIndex((prev) => (prev <= 0 ? maxIndex : prev - 1));
+  };
+
+  const handleNext = () => {
+    setCurrentIndex((prev) => (prev >= maxIndex ? 0 : prev + 1));
+  };
+
   return (
-    <section id="about" className="py-20 sm:py-28 px-4 sm:px-6 lg:px-8 bg-white text-slate-900 border-t border-slate-200">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-
-        {/* Left Column: Stats & Experience Badge */}
-        <div className="lg:col-span-5 relative">
-          <div className="relative h-96 sm:h-[480px] w-full rounded-3xl overflow-hidden shadow-2xl bg-slate-900 border border-slate-200">
-            <Image
-              src="/left_transformer.jpg"
-              alt="Kabira Electricals Engineers at Work"
-              fill
-              className="object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/20 to-transparent" />
-
-            {/* Badge overlay */}
-            <div className="absolute bottom-6 left-6 right-6 p-6 rounded-2xl bg-slate-950/90 backdrop-blur-md border border-amber-500/40 text-white space-y-2">
-              <div className="text-3xl font-extrabold text-amber-400">15+ Years</div>
-              <div className="text-xs font-bold uppercase tracking-wider text-slate-300">
-                Engineering Leadership in Karnataka
-              </div>
-              <p className="text-xs text-slate-400">
-                Proprietary leadership owned by Mr. Afzal Khan, well-versed Class 1 electrical contractor registered with Govt. of Karnataka & BESCOM.
-              </p>
-            </div>
-          </div>
+    <section id="about" className="py-12 sm:py-16 px-4 sm:px-6 lg:px-8 bg-white text-slate-900 border-t border-slate-200 overflow-hidden">
+      <div className="max-w-7xl mx-auto space-y-10">
+        
+        {/* Centered Section Title */}
+        <div className="text-center max-w-3xl mx-auto space-y-2">
+          <h2 className="font-display text-3xl sm:text-5xl font-extrabold tracking-tight uppercase">
+            <span className="text-slate-900">ABOUT</span> <span className="text-amber-600">US</span>
+          </h2>
         </div>
 
-        {/* Right Column: About Content & Strengths */}
-        <div className="lg:col-span-7 space-y-6">
-          <div className="inline-flex items-center gap-2 rounded-full border border-amber-500/30 bg-amber-50 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-amber-700">
-            <ShieldCheck className="w-4 h-4 text-amber-600" />
-            <span>About Kabira Electricals</span>
-          </div>
+        {/* Main Grid: Left Image (gallery8.jpeg) + Right Paragraph & 2-Card Photo Carousel */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
 
-          <h2 className="font-display text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight uppercase">
-            Registered Class 1 <span className="text-amber-600">Electrical Contractors</span>
-          </h2>
-
-          <p className="text-base sm:text-lg text-slate-600 leading-relaxed">
-            M/s Kabira Electricals is a Bangalore-based firm operating in the field of High Voltage & Low Voltage Electrical Installations for Commercial Buildings, Hospitals, IT Parks, Hotels, and Industrial Facilities across Karnataka.
-          </p>
-
-          {/* Strength Pillars Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
-            <div className="p-4 rounded-xl bg-slate-50 border border-slate-200/80 space-y-2">
-              <div className="flex items-center gap-2 font-bold text-slate-900 text-sm">
-                <CheckCircle2 className="w-4 h-4 text-amber-500" />
-                <span>Skilled Technical Workforce</span>
-              </div>
-              <p className="text-xs text-slate-600">
-                Experienced engineers, supervisors, quality controllers, and certified technicians dedicated to timely execution.
-              </p>
-            </div>
-
-            <div className="p-4 rounded-xl bg-slate-50 border border-slate-200/80 space-y-2">
-              <div className="flex items-center gap-2 font-bold text-slate-900 text-sm">
-                <CheckCircle2 className="w-4 h-4 text-amber-500" />
-                <span>BESCOM & KPTCL Empanelled</span>
-              </div>
-              <p className="text-xs text-slate-600">
-                Proven track record in obtaining fast-track departmental clearances, load sanctions, and CEIG safety NOCs.
-              </p>
+          {/* Left Column: Primary Image (gallery8.jpeg - Kept Exactly As Is) */}
+          <div className="lg:col-span-5 relative">
+            <div className="relative h-80 sm:h-[440px] w-full border border-slate-200 overflow-hidden shadow-lg bg-slate-900 rounded-none">
+              <Image
+                src="/gallery8.jpeg"
+                alt="Kabira Electricals On-Site Substation Erection"
+                fill
+                className="object-cover"
+              />
             </div>
           </div>
 
-          {/* Learn More About Us Button */}
-          <div className="pt-4">
-            <Link
-              href="/about"
-              className="inline-flex items-center gap-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-white px-7 py-3.5 font-bold text-xs uppercase tracking-wider transition-all shadow-lg hover:scale-105 transform"
-            >
-              <span>Learn More About Us</span>
-              <ArrowRight className="w-4 h-4 text-amber-400" />
-            </Link>
+          {/* Right Column: Company Overview + 2-Card Photo Carousel */}
+          <div className="lg:col-span-7 space-y-6">
+            
+            {/* Paragraph Text */}
+            <p className="text-sm sm:text-base text-slate-600 leading-relaxed font-normal">
+              M/s Kabira Electricals is a Bangalore-based engineering firm owned by Mr. Afzal Khan, operating in High Voltage (HT) & Low Voltage (LT) turnkey installations for commercial buildings, IT tech parks, luxury hotels, and industrial facilities across Karnataka.
+            </p>
+
+            {/* 2-Card Photo Carousel Container */}
+            <div className="space-y-3 pt-2 border-t border-slate-100">
+              <div className="text-xs font-extrabold text-slate-400 uppercase tracking-widest">
+                On-Site Execution Showcase:
+              </div>
+
+              {/* Slide Viewport with Exact Services-Style Amber Arrow Buttons */}
+              <div className="relative">
+                
+                {/* Left Arrow Button (Exact Services Section Style: Transparent BG, Vibrant Amber Chevron) */}
+                <button
+                  onClick={handlePrev}
+                  aria-label="Previous Site Photos"
+                  className="absolute left-1 sm:left-2 top-1/2 -translate-y-1/2 z-30 p-1 sm:p-2 bg-transparent hover:scale-125 transition-transform duration-200 cursor-pointer group"
+                >
+                  <ChevronLeft className="w-8 h-8 sm:w-10 sm:h-10 text-amber-500 hover:text-amber-400 drop-shadow-[0_2px_8px_rgba(0,0,0,0.95)] stroke-[3]" />
+                </button>
+
+                {/* Right Arrow Button (Exact Services Section Style: Transparent BG, Vibrant Amber Chevron) */}
+                <button
+                  onClick={handleNext}
+                  aria-label="Next Site Photos"
+                  className="absolute right-1 sm:right-2 top-1/2 -translate-y-1/2 z-30 p-1 sm:p-2 bg-transparent hover:scale-125 transition-transform duration-200 cursor-pointer group"
+                >
+                  <ChevronRight className="w-8 h-8 sm:w-10 sm:h-10 text-amber-500 hover:text-amber-400 drop-shadow-[0_2px_8px_rgba(0,0,0,0.95)] stroke-[3]" />
+                </button>
+
+                <div className="w-full overflow-hidden py-1">
+                  <div
+                    className="flex gap-4 transition-transform duration-500 ease-out"
+                    style={{
+                      transform: `translateX(-${currentIndex * (100 / itemsPerPage)}%)`,
+                    }}
+                  >
+                    {aboutGalleryPhotos.map((photo, idx) => (
+                      <div
+                        key={idx}
+                        style={{
+                          flex: itemsPerPage === 1 ? "0 0 100%" : "0 0 calc((100% - 1rem) / 2)",
+                        }}
+                        className="shrink-0"
+                      >
+                        <div className="group relative h-48 sm:h-56 border border-slate-200 overflow-hidden shadow-sm bg-slate-900 rounded-none">
+                          <Image
+                            src={photo.src}
+                            alt={photo.title}
+                            fill
+                            className="object-cover group-hover:scale-105 transition-transform duration-500"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent" />
+                          <div className="absolute bottom-2.5 left-2.5 right-2.5 text-white">
+                            <div className="text-xs font-extrabold text-white leading-tight truncate">
+                              {photo.title}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+
           </div>
 
         </div>

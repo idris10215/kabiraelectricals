@@ -7,6 +7,17 @@ export interface CorporateSector {
 
 export const corporateSectorsData: CorporateSector[] = [
   {
+    id: "corporate-it",
+    category: "Corporate Tech Parks & IT Infrastructure",
+    tagline: "Underground HT Cable Laying, RMU Switchgear & Clean Feeders",
+    clients: [
+      "ATRIA Convergence (ACT Fibernet) ★ Ongoing Enterprise Partner",
+      "Embassy Tech Village",
+      "Software Industry Complex",
+      "NGS Groups",
+    ],
+  },
+  {
     id: "hospitality-commercial",
     category: "Commercial Complexes & Luxury Hospitality",
     tagline: "High-Voltage Substation Erection & Main Distribution Panels",
@@ -16,17 +27,6 @@ export const corporateSectorsData: CorporateSector[] = [
       "Narmada Chain of Restaurants",
       "DRLS Palace Banquet Hall",
       "Mayfair Service Apartments",
-    ],
-  },
-  {
-    id: "corporate-it",
-    category: "Corporate Tech Parks & IT Infrastructure",
-    tagline: "Underground HT Cable Laying, RMU Switchgear & Clean Feeders",
-    clients: [
-      "Embassy Tech Village",
-      "ATRIA Convergence (ACT Fibernet)",
-      "Software Industry Complex",
-      "NGS Groups",
     ],
   },
   {

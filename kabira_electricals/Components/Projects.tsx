@@ -1,8 +1,15 @@
 "use client";
 
+import { useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 interface ProjectClient {
   id: string;
@@ -13,13 +20,6 @@ interface ProjectClient {
 }
 
 const clientProjects: ProjectClient[] = [
-  {
-    id: "act",
-    name: "ACT FIBERNET",
-    location: "Bangalore",
-    workType: "L.T Network Infrastructure",
-    logo: "/act_fibernet.svg",
-  },
   {
     id: "embassy",
     name: "EMBASSY TECH VILLAGE",
@@ -35,6 +35,19 @@ const clientProjects: ProjectClient[] = [
     logo: "/meghana_foods.svg",
   },
   {
+    id: "marriott",
+    name: "COURT YARD MARRIOTT",
+    location: "Outer Ring Road, Marathahalli",
+    workType: "H.T Power Substation",
+  },
+  {
+    id: "act",
+    name: "ATRIA CONVERGENCE (ACT FIBERNET)",
+    location: "Bangalore",
+    workType: "L.T Network Infrastructure",
+    logo: "/act_fibernet.svg",
+  },
+  {
     id: "drls",
     name: "DRLS PALACE BANQUET HALL",
     location: "Shetty Halli, Jalahalli",
@@ -47,12 +60,6 @@ const clientProjects: ProjectClient[] = [
     location: "Koramangala, Bangalore",
     workType: "H.T Power Works",
     logo: "/narmada.svg",
-  },
-  {
-    id: "marriott",
-    name: "COURT YARD MARRIOTT",
-    location: "Outer Ring Road, Marathahalli",
-    workType: "H.T Power Substation",
   },
   {
     id: "supreme",
@@ -93,11 +100,37 @@ const clientProjects: ProjectClient[] = [
 ];
 
 export default function Projects() {
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const marqueeTrackRef = useRef<HTMLDivElement>(null);
+
+  // GSAP ScrollTrigger to start marquee smoothly when section scrolls into viewport
+  useEffect(() => {
+    if (!sectionRef.current || !marqueeTrackRef.current) return;
+
+    const ctx = gsap.context(() => {
+      ScrollTrigger.create({
+        trigger: sectionRef.current,
+        start: "top 85%",
+        onEnter: () => {
+          if (marqueeTrackRef.current) {
+            marqueeTrackRef.current.style.animationPlayState = "running";
+          }
+        },
+      });
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
+
   // Duplicate array for infinite seamless looping
   const marqueeItems = [...clientProjects, ...clientProjects];
 
   return (
-    <section id="projects" className="py-12 sm:py-16 bg-slate-50 text-slate-900 border-t border-slate-200 overflow-hidden">
+    <section
+      ref={sectionRef}
+      id="projects"
+      className="py-12 sm:py-16 bg-slate-50 text-slate-900 border-t border-slate-200 overflow-hidden"
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
         
         {/* Section Header */}
@@ -107,7 +140,7 @@ export default function Projects() {
           </h2>
 
           <p className="text-slate-600 text-sm sm:text-base leading-relaxed font-normal">
-            Delivering high-voltage electrical installations, substation erection, and BESCOM clearances for Karnataka's top corporate tech parks, luxury hospitality, and commercial brands.
+            Delivering high-voltage electrical installations, substation erection, and BESCOM clearances for Karnataka's leading commercial brands, alongside ongoing enterprise partnerships with technology leaders like ACT Fibernet.
           </p>
         </div>
 
@@ -118,12 +151,16 @@ export default function Projects() {
           <div className="absolute top-0 bottom-0 left-0 w-16 sm:w-28 bg-gradient-to-r from-white to-transparent z-20 pointer-events-none" />
           <div className="absolute top-0 bottom-0 right-0 w-16 sm:w-28 bg-gradient-to-l from-white to-transparent z-20 pointer-events-none" />
 
-          {/* Continuous Moving Track */}
-          <div className="animate-marquee items-center gap-14 sm:gap-20">
+          {/* Continuous Moving Track - Triggers on Scroll */}
+          <div
+            ref={marqueeTrackRef}
+            className="animate-marquee items-center gap-14 sm:gap-20"
+            style={{ animationPlayState: "paused" }}
+          >
             {marqueeItems.map((project, index) => (
               <div
                 key={`${project.id}-${index}`}
-                className="flex flex-col items-center justify-center space-y-2 shrink-0"
+                className="flex flex-col items-center justify-center space-y-2 shrink-0 relative"
               >
                 {/* Pure Colorful Logo (If Available) */}
                 {project.logo ? (
@@ -137,7 +174,7 @@ export default function Projects() {
                       />
                     </div>
                     {/* Location Only Below Logo */}
-                    <div className="text-xs font-semibold text-slate-500 tracking-wide">
+                    <div className="text-xs font-semibold text-slate-500 tracking-wide text-center">
                       {project.location}
                     </div>
                   </>
