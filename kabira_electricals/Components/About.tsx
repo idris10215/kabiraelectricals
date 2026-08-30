@@ -100,25 +100,25 @@ export default function About() {
                 On-Site Execution Showcase:
               </div>
 
-              {/* Slide Viewport with Exact Services-Style Amber Arrow Buttons */}
+              {/* Slide Viewport with Exact Same Transparent Amber Chevron Arrows as /about */}
               <div className="relative">
                 
-                {/* Left Arrow Button (Exact Services Section Style: Transparent BG, Vibrant Amber Chevron) */}
+                {/* Left Arrow Button */}
                 <button
                   onClick={handlePrev}
                   aria-label="Previous Site Photos"
                   className="absolute left-1 sm:left-2 top-1/2 -translate-y-1/2 z-30 p-1 sm:p-2 bg-transparent hover:scale-125 transition-transform duration-200 cursor-pointer group"
                 >
-                  <ChevronLeft className="w-8 h-8 sm:w-10 sm:h-10 text-amber-500 hover:text-amber-400 drop-shadow-[0_2px_8px_rgba(0,0,0,0.95)] stroke-[3]" />
+                  <ChevronLeft className="w-8 h-8 sm:w-11 sm:h-11 text-amber-500 hover:text-amber-400 drop-shadow-[0_2px_8px_rgba(0,0,0,0.95)] stroke-[3]" />
                 </button>
 
-                {/* Right Arrow Button (Exact Services Section Style: Transparent BG, Vibrant Amber Chevron) */}
+                {/* Right Arrow Button */}
                 <button
                   onClick={handleNext}
                   aria-label="Next Site Photos"
                   className="absolute right-1 sm:right-2 top-1/2 -translate-y-1/2 z-30 p-1 sm:p-2 bg-transparent hover:scale-125 transition-transform duration-200 cursor-pointer group"
                 >
-                  <ChevronRight className="w-8 h-8 sm:w-10 sm:h-10 text-amber-500 hover:text-amber-400 drop-shadow-[0_2px_8px_rgba(0,0,0,0.95)] stroke-[3]" />
+                  <ChevronRight className="w-8 h-8 sm:w-11 sm:h-11 text-amber-500 hover:text-amber-400 drop-shadow-[0_2px_8px_rgba(0,0,0,0.95)] stroke-[3]" />
                 </button>
 
                 <div className="w-full overflow-hidden py-1">
@@ -136,7 +136,8 @@ export default function About() {
                         }}
                         className="shrink-0"
                       >
-                        <div className="group relative h-48 sm:h-56 border border-slate-200 overflow-hidden shadow-sm bg-slate-900 rounded-none">
+                        {/* Increased Height on Mobile (h-64 sm:h-56) for crisp landscape filling */}
+                        <div className="group relative h-64 sm:h-56 border border-slate-200 overflow-hidden shadow-sm bg-slate-900 rounded-none">
                           <Image
                             src={photo.src}
                             alt={photo.title}

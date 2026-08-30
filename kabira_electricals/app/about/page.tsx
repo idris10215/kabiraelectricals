@@ -70,18 +70,17 @@ export default function AboutPage() {
       <section className="relative pt-28 sm:pt-32 pb-12 sm:pb-16 px-4 sm:px-6 lg:px-8 bg-slate-900 text-white border-b border-slate-800">
         <div className="max-w-7xl mx-auto space-y-4">
           <Link
-            href="/"
+            href="/#about"
             className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-amber-400 hover:text-amber-300 transition-colors"
           >
             <ArrowLeft className="w-4 h-4" />
-            <span>Back to Home</span>
+            <span>Back to About Us</span>
           </Link>
 
           <div className="space-y-2">
             <h1 className="font-display text-4xl sm:text-6xl font-extrabold uppercase tracking-tight text-white leading-tight">
               About <span className="text-amber-500">Kabira Electricals</span>
             </h1>
-
           </div>
         </div>
       </section>
@@ -140,7 +139,7 @@ export default function AboutPage() {
           {/* 2-Card Viewport with Exact Services-Style Amber Arrow Buttons */}
           <div className="relative">
             
-            {/* Left Arrow Button (Exact Services Section Style: Transparent BG, Vibrant Amber Chevron) */}
+            {/* Left Arrow Button */}
             <button
               onClick={handlePrev}
               aria-label="Previous Site Photos"
@@ -149,7 +148,7 @@ export default function AboutPage() {
               <ChevronLeft className="w-8 h-8 sm:w-11 sm:h-11 text-amber-500 hover:text-amber-400 drop-shadow-[0_2px_8px_rgba(0,0,0,0.95)] stroke-[3]" />
             </button>
 
-            {/* Right Arrow Button (Exact Services Section Style: Transparent BG, Vibrant Amber Chevron) */}
+            {/* Right Arrow Button */}
             <button
               onClick={handleNext}
               aria-label="Next Site Photos"

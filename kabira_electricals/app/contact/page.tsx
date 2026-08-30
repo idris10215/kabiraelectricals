@@ -15,16 +15,15 @@ export default function ContactPage() {
       <Navbar />
 
       {/* Page Hero Header */}
-      <section className="relative pt-28 sm:pt-32 pb-12 sm:pb-16 px-4 sm:px-6 lg:px-8 bg-slate-900 text-white border-b border-slate-800">
-        <div className="max-w-7xl mx-auto space-y-4">
+      <section className="relative pt-28 sm:pt-32 pb-6 px-4 sm:px-6 lg:px-8 bg-slate-900 text-white border-b border-slate-800">
+        <div className="max-w-7xl mx-auto">
           <Link
-            href="/"
+            href="/#contact"
             className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-amber-400 hover:text-amber-300 transition-colors"
           >
             <ArrowLeft className="w-4 h-4" />
-            <span>Back to Home</span>
+            <span>Back to Contact Section</span>
           </Link>
-
         </div>
       </section>
 

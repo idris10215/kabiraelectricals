@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import Navbar from "@/Components/Navbar";
 import Footer from "@/Components/Footer";
-import { ArrowLeft, ShieldCheck, Zap, ArrowRight } from "lucide-react";
+import { ArrowLeft, Zap, ArrowRight } from "lucide-react";
 import { servicesData } from "@/data/services";
 
 export const metadata = {
@@ -13,7 +13,7 @@ export const metadata = {
 
 export default function ServicesPage() {
   return (
-    <div className="min-h-screen  text-slate-100 font-sans">
+    <div className="min-h-screen text-slate-100 font-sans">
       <Navbar />
 
       {/* Hero Banner */}
@@ -21,11 +21,11 @@ export default function ServicesPage() {
         <div className="absolute inset-0 bg-gradient-to-r from-amber-500/10 via-transparent to-transparent pointer-events-none" />
         <div className="max-w-7xl mx-auto relative z-10 space-y-4">
           <Link
-            href="/"
+            href="/#services"
             className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-amber-400 hover:text-amber-300 transition-colors"
           >
             <ArrowLeft className="w-4 h-4" />
-            <span>Back to Home</span>
+            <span>Back to Home Services</span>
           </Link>
 
           <div className="space-y-3">
@@ -60,14 +60,6 @@ export default function ServicesPage() {
 
               {/* Dark Gradient Overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/50 to-transparent z-10" />
-
-              {/* Top Category Badge */}
-              {/* <div className="absolute top-4 left-4 z-20">
-                <span className="inline-flex items-center gap-1.5 bg-slate-950/90 border border-amber-500/40 text-amber-400 text-[10px] font-extrabold px-3 py-1 uppercase tracking-widest shadow-md">
-                  <ShieldCheck className="w-3.5 h-3.5" />
-                  {service.badge}
-                </span>
-              </div> */}
 
               {/* Card Title & CTA */}
               <div className="relative z-20 space-y-3">
