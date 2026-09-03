@@ -21,6 +21,32 @@ export default function Chatbot() {
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const chatBottomRef = useRef<HTMLDivElement>(null);
 
+  // Load saved session conversation history on initial mount
+  useEffect(() => {
+    try {
+      const savedMessages = sessionStorage.getItem("ke_chat_messages");
+      if (savedMessages) {
+        const parsed = JSON.parse(savedMessages);
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          setMessages(parsed);
+        }
+      }
+    } catch (e) {
+      console.error("Failed to load chat history", e);
+    }
+  }, []);
+
+  // Save conversation history to sessionStorage whenever messages update
+  useEffect(() => {
+    if (messages.length > 0) {
+      try {
+        sessionStorage.setItem("ke_chat_messages", JSON.stringify(messages));
+      } catch (e) {
+        console.error("Failed to save chat history", e);
+      }
+    }
+  }, [messages]);
+
   // Lock background body scroll when chatbot window is open
   useEffect(() => {
     if (isOpen) {
