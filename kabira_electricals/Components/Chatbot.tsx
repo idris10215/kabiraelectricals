@@ -1,19 +1,37 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import { MessageSquare, X, ChevronRight, Send, Zap } from "lucide-react";
+import { MessageSquare, X, ChevronRight, Send } from "lucide-react";
+
+interface ChatOption {
+  label: string;
+  actionKey: string;
+  payload?: string;
+}
 
 interface ChatMessage {
   id: string;
   sender: "bot" | "user";
   text: string;
-  options?: { label: string; action: () => void }[];
+  options?: ChatOption[];
 }
 
 export default function Chatbot() {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const chatBottomRef = useRef<HTMLDivElement>(null);
+
+  // Lock background body scroll when chatbot window is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isOpen]);
 
   // Auto-scroll smoothly to bottom whenever messages update
   useEffect(() => {
@@ -22,50 +40,46 @@ export default function Chatbot() {
     }
   }, [messages, isOpen]);
 
-  // Initialize chat greeting when opened
+  // Initial menu options generator
+  const getInitialMenuOptions = (): ChatOption[] => [
+    { label: "⚡ HT/LT Substation & Cable Laying", actionKey: "service", payload: "HT/LT Substation & Cable Laying Works" },
+    { label: "📜 BESCOM Load Enhancement & Reduction", actionKey: "service", payload: "BESCOM Load Enhancement & Reduction" },
+    { label: "🏗️ KPTCL Turnkey Substation Works", actionKey: "service", payload: "KPTCL Turnkey Substation Works" },
+    { label: "🏭 Commercial & Industrial Electrical", actionKey: "service", payload: "Commercial & Industrial Electrical Contracting" },
+    { label: "🏢 View 44+ Executed Projects", actionKey: "projects" },
+    { label: "🏆 Govt. Completion Certificates", actionKey: "certificates" },
+    { label: "📞 Direct Contact Details", actionKey: "contact" },
+  ];
+
+  // Initialize chat greeting when opened for first time
   const handleOpenChat = () => {
     setIsOpen(true);
     if (messages.length === 0) {
-      showInitialOptions();
+      setMessages([
+        {
+          id: "1",
+          sender: "bot",
+          text: "Hello! Welcome to Kabira Electricals. I am your Engineering Consultation Assistant. Select any option below to explore our services, project portfolio, or get a quick quotation:",
+          options: getInitialMenuOptions(),
+        },
+      ]);
     }
   };
 
-  const showInitialOptions = () => {
-    setMessages([
+  // Append Main Menu without erasing previous conversation history
+  const handleShowMenu = () => {
+    setMessages((prev) => [
+      ...prev,
       {
-        id: "1",
+        id: Date.now().toString(),
+        sender: "user",
+        text: "Show Main Menu",
+      },
+      {
+        id: (Date.now() + 1).toString(),
         sender: "bot",
-        text: "Hello! Welcome to Kabira Electricals. I am your Engineering Consultation Assistant. Select any option below to explore our services, project portfolio, or get a quick quotation:",
-        options: [
-          {
-            label: "⚡ HT/LT Substation & Cable Laying",
-            action: () => handleSelectService("HT/LT Substation & Cable Laying Works"),
-          },
-          {
-            label: "📜 BESCOM Load Enhancement & Reduction",
-            action: () => handleSelectService("BESCOM Load Enhancement & Reduction"),
-          },
-          {
-            label: "🏗️ KPTCL Turnkey Substation Works",
-            action: () => handleSelectService("KPTCL Turnkey Substation Works"),
-          },
-          {
-            label: "🏭 Commercial & Industrial Electrical",
-            action: () => handleSelectService("Commercial & Industrial Electrical Contracting"),
-          },
-          {
-            label: "🏢 View 44+ Executed Projects",
-            action: () => handleSelectProjects(),
-          },
-          {
-            label: "🏆 Govt. Completion Certificates",
-            action: () => handleSelectCertificates(),
-          },
-          {
-            label: "📞 Direct Contact Details",
-            action: () => handleSelectContact(),
-          },
-        ],
+        text: "Please select an option below to continue exploring our services & projects:",
+        options: getInitialMenuOptions(),
       },
     ]);
   };
@@ -106,20 +120,16 @@ export default function Chatbot() {
         options: [
           {
             label: "💬 Enquire on WhatsApp Now",
-            action: () => {
-              window.open(`https://wa.me/919986979419?text=${encodeURIComponent(whatsappQuery)}`, "_blank");
-            },
+            actionKey: "whatsapp",
+            payload: whatsappQuery,
           },
           {
             label: "📄 View All Executed Projects",
-            action: () => {
-              setIsOpen(false);
-              window.location.href = "/projects";
-            },
+            actionKey: "page_projects",
           },
           {
             label: "🔄 Explore Other Services",
-            action: () => showInitialOptions(),
+            actionKey: "menu",
           },
         ],
       },
@@ -143,20 +153,16 @@ export default function Chatbot() {
         options: [
           {
             label: "💬 Connect with Mr. Afzal Khan on WhatsApp",
-            action: () => {
-              window.open("https://wa.me/919986979419?text=Hi%20Mr.%20Afzal%20Khan,%20I%20would%20like%20to%20consult%20regarding%20turnkey%20electrical%20projects.", "_blank");
-            },
+            actionKey: "whatsapp",
+            payload: "Hi Mr. Afzal Khan, I would like to consult regarding turnkey electrical projects.",
           },
           {
             label: "📄 Open Complete Projects Portfolio Page",
-            action: () => {
-              setIsOpen(false);
-              window.location.href = "/projects";
-            },
+            actionKey: "page_projects",
           },
           {
             label: "🔄 Main Menu",
-            action: () => showInitialOptions(),
+            actionKey: "menu",
           },
         ],
       },
@@ -178,20 +184,16 @@ export default function Chatbot() {
         options: [
           {
             label: "📄 View Official Certificates on Projects Page",
-            action: () => {
-              setIsOpen(false);
-              window.location.href = "/projects";
-            },
+            actionKey: "page_projects",
           },
           {
             label: "💬 Connect with Mr. Afzal Khan on WhatsApp",
-            action: () => {
-              window.open("https://wa.me/919986979419?text=Hi%20Mr.%20Afzal%20Khan,%20I%20would%20like%20to%20consult%20regarding%20turnkey%20electrical%20projects.", "_blank");
-            },
+            actionKey: "whatsapp",
+            payload: "Hi Mr. Afzal Khan, I would like to consult regarding turnkey electrical projects.",
           },
           {
             label: "🔄 Main Menu",
-            action: () => showInitialOptions(),
+            actionKey: "menu",
           },
         ],
       },
@@ -213,23 +215,41 @@ export default function Chatbot() {
         options: [
           {
             label: "💬 Chat on WhatsApp (+91 9986979419)",
-            action: () => {
-              window.open("https://wa.me/919986979419", "_blank");
-            },
+            actionKey: "whatsapp",
+            payload: "Hi Mr. Afzal Khan, I got your contact details from the website.",
           },
           {
             label: "📞 Call Executive Office",
-            action: () => {
-              window.location.href = "tel:+919986979419";
-            },
+            actionKey: "phone",
           },
           {
             label: "🔄 Main Menu",
-            action: () => showInitialOptions(),
+            actionKey: "menu",
           },
         ],
       },
     ]);
+  };
+
+  const handleOptionClick = (opt: ChatOption) => {
+    if (opt.actionKey === "service" && opt.payload) {
+      handleSelectService(opt.payload);
+    } else if (opt.actionKey === "projects") {
+      handleSelectProjects();
+    } else if (opt.actionKey === "certificates") {
+      handleSelectCertificates();
+    } else if (opt.actionKey === "contact") {
+      handleSelectContact();
+    } else if (opt.actionKey === "whatsapp") {
+      window.open(`https://wa.me/919986979419?text=${encodeURIComponent(opt.payload || "")}`, "_blank");
+    } else if (opt.actionKey === "page_projects") {
+      setIsOpen(false);
+      window.location.href = "/projects";
+    } else if (opt.actionKey === "phone") {
+      window.location.href = "tel:+919986979419";
+    } else if (opt.actionKey === "menu") {
+      handleShowMenu();
+    }
   };
 
   return (
@@ -256,14 +276,12 @@ export default function Chatbot() {
       {/* Interactive Chat Window */}
       {isOpen && (
         <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 w-[calc(100vw-2rem)] sm:w-96 bg-white border border-slate-300 shadow-2xl rounded-2xl overflow-hidden flex flex-col max-h-[85vh] sm:max-h-[580px] animate-fadeIn">
-
+          
           {/* Header */}
           <div className="bg-slate-900 text-white p-4 border-b border-slate-800 flex items-center justify-between shrink-0">
             <div className="flex items-center gap-3">
-
               <div>
                 <div className="text-xs font-extrabold text-white">Kabira Electrical Assistant</div>
-
               </div>
             </div>
             <button
@@ -276,17 +294,18 @@ export default function Chatbot() {
           </div>
 
           {/* Messages Body */}
-          <div className="p-4 overflow-y-auto flex-1 space-y-4 bg-slate-50 text-xs text-slate-900">
+          <div className="p-4 overflow-y-auto flex-1 space-y-4 bg-slate-50 text-xs text-slate-900 overscroll-contain">
             {messages.map((msg) => (
               <div
                 key={msg.id}
                 className={`flex flex-col ${msg.sender === "user" ? "items-end" : "items-start"}`}
               >
                 <div
-                  className={`max-w-[85%] p-3.5 rounded-xl leading-relaxed font-normal shadow-2xs ${msg.sender === "user"
+                  className={`max-w-[85%] p-3.5 rounded-xl leading-relaxed font-normal shadow-2xs ${
+                    msg.sender === "user"
                       ? "bg-amber-500 text-slate-950 font-bold rounded-br-none"
                       : "bg-white text-slate-800 border border-slate-200 rounded-bl-none whitespace-pre-line"
-                    }`}
+                  }`}
                 >
                   {msg.text}
                 </div>
@@ -297,7 +316,7 @@ export default function Chatbot() {
                     {msg.options.map((opt, idx) => (
                       <button
                         key={idx}
-                        onClick={opt.action}
+                        onClick={() => handleOptionClick(opt)}
                         className="w-full text-left p-3 bg-white hover:bg-amber-50 border border-slate-200 hover:border-amber-400 text-slate-900 font-bold text-xs rounded-xl transition-all flex items-center justify-between shadow-2xs group cursor-pointer"
                       >
                         <span className="pr-2">{opt.label}</span>
