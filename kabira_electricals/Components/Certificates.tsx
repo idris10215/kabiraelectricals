@@ -167,12 +167,7 @@ export default function Certificates() {
             {/* Modal Footer */}
             <div className="p-4 bg-slate-900 border-t border-slate-800 flex items-center justify-between text-slate-400 text-xs shrink-0">
               <div className="truncate pr-2">Ref: {selectedCert.workOrderNo}</div>
-              <button
-                onClick={() => setSelectedCert(null)}
-                className="px-4 py-2 bg-amber-500 text-slate-950 font-extrabold text-xs uppercase tracking-wider hover:bg-amber-400 transition-colors cursor-pointer shrink-0"
-              >
-                Close Window
-              </button>
+
             </div>
           </div>
         </div>

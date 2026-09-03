@@ -1,9 +1,9 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, TouchEvent } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, ChevronLeft, ChevronRight, Zap } from "lucide-react";
+import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { servicesData } from "@/data/services";
 
 // Duplicate items for 100% seamless, continuous infinite looping
@@ -14,6 +14,8 @@ export default function Services() {
   const [currentIndex, setCurrentIndex] = useState(N); // Start at middle set (index 8)
   const [isTransitioning, setIsTransitioning] = useState(true);
   const [itemsPerPage, setItemsPerPage] = useState(4);
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [touchEnd, setTouchEnd] = useState<number | null>(null);
 
   // Responsive items count calculation
   useEffect(() => {
@@ -41,6 +43,31 @@ export default function Services() {
   const handlePrev = () => {
     if (!isTransitioning) return;
     setCurrentIndex((prev) => prev - 1);
+  };
+
+  // Mobile Touch Swipe Handlers
+  const minSwipeDistance = 40;
+
+  const onTouchStart = (e: TouchEvent) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const onTouchMove = (e: TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const onTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > minSwipeDistance;
+    const isRightSwipe = distance < -minSwipeDistance;
+
+    if (isLeftSwipe) {
+      handleNext();
+    } else if (isRightSwipe) {
+      handlePrev();
+    }
   };
 
   // Seamless jump reset when transition finishes
@@ -84,15 +111,18 @@ export default function Services() {
 
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto space-y-3 border-b border-slate-200 pb-6">
-
           <h2 className="font-display text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight uppercase">
             Our Core <span className="text-amber-600">Services</span>
           </h2>
         </div>
 
-        {/* Carousel Viewport Wrapper */}
-        <div className="relative">
-
+        {/* Carousel Viewport Wrapper with Mobile Touch Swipe Support */}
+        <div
+          className="relative"
+          onTouchStart={onTouchStart}
+          onTouchMove={onTouchMove}
+          onTouchEnd={onTouchEnd}
+        >
           {/* Left Arrow Icon */}
           <button
             onClick={handlePrev}
@@ -115,8 +145,9 @@ export default function Services() {
           <div className="w-full overflow-hidden py-1">
             <div
               onTransitionEnd={handleTransitionEnd}
-              className={`flex gap-4 sm:gap-6 ${isTransitioning ? "transition-transform duration-500 ease-out" : "transition-none"
-                }`}
+              className={`flex gap-4 sm:gap-6 ${
+                isTransitioning ? "transition-transform duration-500 ease-out" : "transition-none"
+              }`}
               style={{
                 transform: `translateX(${getTranslateX()})`,
               }}
@@ -129,8 +160,8 @@ export default function Services() {
                       itemsPerPage === 1
                         ? "0 0 100%"
                         : itemsPerPage === 2
-                          ? "0 0 calc((100% - 1.5rem) / 2)"
-                          : "0 0 calc((100% - 4.5rem) / 4)",
+                        ? "0 0 calc((100% - 1.5rem) / 2)"
+                        : "0 0 calc((100% - 4.5rem) / 4)",
                   }}
                   className="shrink-0"
                 >
@@ -169,7 +200,6 @@ export default function Services() {
               ))}
             </div>
           </div>
-
         </div>
 
         {/* View All Services CTA Button */}
