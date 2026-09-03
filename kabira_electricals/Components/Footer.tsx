@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { ShieldCheck, Phone, Mail, MapPin } from "lucide-react";
+import { Phone, Mail, MapPin } from "lucide-react";
 
 export default function Footer() {
   return (
@@ -67,7 +67,7 @@ export default function Footer() {
             <ul className="space-y-1.5 text-[11px]">
               <li>• Turnkey HT Substation & Panel Works</li>
               <li>• BESCOM Load Enhancement & Reduction</li>
-              <li>• KPTCL Substation & Overhead Line Works</li>
+              <li>• Overhead Line & Cable Laying</li>
               <li>• Transformer Installation & Erection</li>
               <li>• CEIG Safety Inspection & Approvals</li>
               <li>• Commercial Electrical Contracting</li>

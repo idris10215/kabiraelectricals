@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import { MessageSquare, X, ChevronRight, Send } from "lucide-react";
+import { servicesData } from "@/data/services";
 
 interface ChatOption {
   label: string;
@@ -66,12 +67,9 @@ export default function Chatbot() {
     }
   }, [messages, isOpen]);
 
-  // Initial menu options generator
+  // Main menu options generator
   const getInitialMenuOptions = (): ChatOption[] => [
-    { label: "⚡ HT/LT Substation & Cable Laying", actionKey: "service", payload: "HT/LT Substation & Cable Laying Works" },
-    { label: "📜 BESCOM Load Enhancement & Reduction", actionKey: "service", payload: "BESCOM Load Enhancement & Reduction" },
-    { label: "🏗️ KPTCL Turnkey Substation Works", actionKey: "service", payload: "KPTCL Turnkey Substation Works" },
-    { label: "🏭 Commercial & Industrial Electrical", actionKey: "service", payload: "Commercial & Industrial Electrical Contracting" },
+    { label: "⚡ View Our Services (7 Specialized Services)", actionKey: "show_services_list" },
     { label: "🏢 View 44+ Executed Projects", actionKey: "projects" },
     { label: "🏆 Govt. Completion Certificates", actionKey: "certificates" },
     { label: "📞 Direct Contact Details", actionKey: "contact" },
@@ -92,6 +90,32 @@ export default function Chatbot() {
     }
   };
 
+  // List all 7 specialized services as interactive sub-options
+  const handleShowServicesList = () => {
+    const serviceOptions: ChatOption[] = servicesData.map((s) => ({
+      label: `👉 ${s.shortTitle}`,
+      actionKey: "service",
+      payload: s.slug,
+    }));
+
+    serviceOptions.push({ label: "🔄 Main Menu", actionKey: "menu" });
+
+    setMessages((prev) => [
+      ...prev,
+      {
+        id: Date.now().toString(),
+        sender: "user",
+        text: "View Our Services (7 Specialized Services)",
+      },
+      {
+        id: (Date.now() + 1).toString(),
+        sender: "bot",
+        text: "We offer 7 specialized Class 1 electrical engineering services across Karnataka. Select any service below to explore what we offer:",
+        options: serviceOptions,
+      },
+    ]);
+  };
+
   // Append Main Menu without erasing previous conversation history
   const handleShowMenu = () => {
     setMessages((prev) => [
@@ -110,39 +134,23 @@ export default function Chatbot() {
     ]);
   };
 
-  const handleSelectService = (serviceName: string) => {
-    let responseText = "";
-    let projectsText = "";
-    let whatsappQuery = "";
+  const handleSelectServiceBySlug = (slug: string) => {
+    const service = servicesData.find((s) => s.slug === slug);
+    if (!service) return;
 
-    if (serviceName === "HT/LT Substation & Cable Laying Works") {
-      responseText = "For HT/LT Substation & Cable Laying, M/s Kabira Electricals executes 11kV/33kV indoor & outdoor substation erection, RMU installation, transformer commissioning, and high-voltage underground cable pothead jointing.";
-      projectsText = "🏆 Featured Executed Projects: Embassy Tech Village (Marathahalli), Courtyard Marriott, DRLS Palace Banquet Hall, and Supreme Constructions.";
-      whatsappQuery = "Hi Mr. Afzal Khan, I inquired on your website regarding HT/LT Substation & Cable Laying Works and would like a quotation for my project.";
-    } else if (serviceName === "BESCOM Load Enhancement & Reduction") {
-      responseText = "We manage complete end-to-end BESCOM electrical load sanction enhancements, load reductions, power supply arrangements, and safety approvals for commercial facilities & tech parks.";
-      projectsText = "🏆 Featured Executed Work: Sanctioned completion clearances for MS Building Panathur (₹16.96 Lakhs BESCOM Work Order) and enterprise establishments.";
-      whatsappQuery = "Hi Mr. Afzal Khan, I need assistance with BESCOM Load Enhancement / Reduction for my commercial project.";
-    } else if (serviceName === "KPTCL Turnkey Substation Works") {
-      responseText = "We specialize in KPTCL turnkey substation construction, bay line extension works, overhead transmission line erection, and Government safety testing across Karnataka.";
-      projectsText = "🏆 Executed Work: Turnkey municipal water plant infrastructure (Mysore City Corporation ₹19.84 Lakhs IBPS Kabini Water Supply Project).";
-      whatsappQuery = "Hi Mr. Afzal Khan, I would like to consult regarding KPTCL Turnkey Substation & Transmission Works.";
-    } else {
-      responseText = "We execute complete end-to-end electrical contracting for IT tech parks, luxury hotels, multi-specialty hospitals, banquet halls, and industrial manufacturing plants.";
-      projectsText = "🏆 Representative Establishments: Meghana Foods (Koramangala), Narmada Restaurants, ACT Fibernet (Atria Convergence), Diascope Healthcare, and IBPS Plant.";
-      whatsappQuery = "Hi Mr. Afzal Khan, I have a Commercial / Industrial Electrical Contracting project inquiry.";
-    }
+    const responseText = service.summary;
+    const whatsappQuery = `Hi Mr. Afzal Khan, I inquired on your website regarding ${service.title} and would like a quotation for my project.`;
 
     const newMessages: ChatMessage[] = [
       {
         id: Date.now().toString(),
         sender: "user",
-        text: `Tell me about ${serviceName}`,
+        text: `Tell me about ${service.title}`,
       },
       {
         id: (Date.now() + 1).toString(),
         sender: "bot",
-        text: `${responseText}\n\n${projectsText}\n\nWould you like to connect with Mr. Afzal Khan directly for a turnkey quotation?`,
+        text: `${responseText}\n\nWould you like to connect with Mr. Afzal Khan directly for a turnkey quotation or view full service details?`,
         options: [
           {
             label: "💬 Enquire on WhatsApp Now",
@@ -150,11 +158,16 @@ export default function Chatbot() {
             payload: whatsappQuery,
           },
           {
-            label: "📄 View All Executed Projects",
-            actionKey: "page_projects",
+            label: `📄 View Full ${service.shortTitle} Page`,
+            actionKey: "page_service",
+            payload: service.slug,
           },
           {
-            label: "🔄 Explore Other Services",
+            label: "⚡ View All 7 Services",
+            actionKey: "show_services_list",
+          },
+          {
+            label: "🔄 Main Menu",
             actionKey: "menu",
           },
         ],
@@ -258,8 +271,10 @@ export default function Chatbot() {
   };
 
   const handleOptionClick = (opt: ChatOption) => {
-    if (opt.actionKey === "service" && opt.payload) {
-      handleSelectService(opt.payload);
+    if (opt.actionKey === "show_services_list") {
+      handleShowServicesList();
+    } else if (opt.actionKey === "service" && opt.payload) {
+      handleSelectServiceBySlug(opt.payload);
     } else if (opt.actionKey === "projects") {
       handleSelectProjects();
     } else if (opt.actionKey === "certificates") {
@@ -268,6 +283,9 @@ export default function Chatbot() {
       handleSelectContact();
     } else if (opt.actionKey === "whatsapp") {
       window.open(`https://wa.me/919986979419?text=${encodeURIComponent(opt.payload || "")}`, "_blank");
+    } else if (opt.actionKey === "page_service" && opt.payload) {
+      setIsOpen(false);
+      window.location.href = `/services/${opt.payload}`;
     } else if (opt.actionKey === "page_projects") {
       setIsOpen(false);
       window.location.href = "/projects";

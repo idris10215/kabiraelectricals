@@ -11,7 +11,7 @@ const N = servicesData.length;
 const tripleServices = [...servicesData, ...servicesData, ...servicesData];
 
 export default function Services() {
-  const [currentIndex, setCurrentIndex] = useState(N); // Start at middle set (index 8)
+  const [currentIndex, setCurrentIndex] = useState(N); // Start at middle set (index 7)
   const [isTransitioning, setIsTransitioning] = useState(true);
   const [itemsPerPage, setItemsPerPage] = useState(4);
   const [touchStart, setTouchStart] = useState<number | null>(null);
@@ -208,7 +208,7 @@ export default function Services() {
             href="/services"
             className="inline-flex items-center gap-3 bg-slate-900 hover:bg-amber-500 text-white hover:text-slate-950 px-8 py-4 rounded-full font-extrabold text-xs sm:text-sm uppercase tracking-wider transition-all duration-300 shadow-xl hover:scale-105 transform"
           >
-            <span>Explore All 8 Specialized Services</span>
+            <span>Explore All 7 Specialized Services</span>
             <ArrowRight className="w-4 h-4" />
           </Link>
         </div>

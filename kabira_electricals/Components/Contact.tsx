@@ -168,7 +168,6 @@ export default function Contact() {
                   <option value="HT/LT Substation & Cable Laying Works">HT/LT Substation & Cable Laying Works</option>
                   <option value="BESCOM Load Enhancement">BESCOM Load Enhancement</option>
                   <option value="BESCOM Load Reduction">BESCOM Load Reduction</option>
-                  <option value="KPTCL Turnkey Substation Works">KPTCL Turnkey Substation Works</option>
                   <option value="Transformer Erection & Maintenance">Transformer Erection & Maintenance</option>
                   <option value="CEIG Safety Clearance & Approvals">CEIG Safety Clearance & Approvals</option>
                   <option value="Arranging Power Supply / Sanctions">Arranging Power Supply / Sanctions</option>

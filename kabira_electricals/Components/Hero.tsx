@@ -98,7 +98,7 @@ export default function Hero() {
           ref={paraRef}
           className="max-w-xl text-sm sm:text-base lg:text-lg font-semibold leading-normal text-slate-200 tracking-wide drop-shadow"
         >
-          Empower your business for long-term operational success. As leading Class 1 electrical contractors in Bangalore, our quality-driven approach ensures flawless execution of complex HT works, transformer installations, and turnkey KPTCL projects.
+          Empower your business for long-term operational success. As leading Class 1 electrical contractors in Bangalore, our quality-driven approach ensures flawless execution of complex HT works, transformer installations, and turnkey substation projects.
         </p>
       </div>
 

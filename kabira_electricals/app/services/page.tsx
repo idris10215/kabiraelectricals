@@ -2,13 +2,13 @@ import Link from "next/link";
 import Image from "next/image";
 import Navbar from "@/Components/Navbar";
 import Footer from "@/Components/Footer";
-import { ArrowLeft, Zap, ArrowRight } from "lucide-react";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 import { servicesData } from "@/data/services";
 
 export const metadata = {
   title: "Services | Kabira Electricals",
   description:
-    "Explore our 8 core specialized Class 1 Electrical Contracting services, BESCOM approvals, KPTCL turnkey works, transformer installations, and CEIG clearances.",
+    "Explore our 7 core specialized Class 1 Electrical Contracting services, BESCOM approvals, transformer installations, and CEIG clearances.",
 };
 
 export default function ServicesPage() {
@@ -29,7 +29,6 @@ export default function ServicesPage() {
           </Link>
 
           <div className="space-y-3">
-
             <h1 className="font-display text-3xl sm:text-5xl lg:text-6xl font-extrabold uppercase tracking-tight text-white">
               Specialized <span className="text-amber-500">Engineering Services</span>
             </h1>

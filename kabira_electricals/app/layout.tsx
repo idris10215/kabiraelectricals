@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     template: "%s | Kabira Electricals",
   },
   description:
-    "M/s Kabira Electricals is a Class 1 Govt. Licensed Electrical Contractor & Engineering firm in Bangalore owned by Mr. Afzal Khan. Specializing in HT/LT substations, BESCOM load enhancement, KPTCL works, and CEIG approvals across Karnataka.",
+    "M/s Kabira Electricals is a Class 1 Govt. Licensed Electrical Contractor & Engineering firm in Bangalore owned by Mr. Afzal Khan. Specializing in HT/LT substations, BESCOM load enhancement, transformer works, and CEIG approvals across Karnataka.",
   keywords: [
     "Kabira Electricals",
     "Kabira Electricals Bangalore",
@@ -44,8 +44,6 @@ export const metadata: Metadata = {
     "11kV 33kV Substation Erection Bangalore",
     "CEIG Safety Inspection Approval",
     "CEIG clearance consultants Bangalore",
-    "KPTCL Turnkey Substation Works",
-    "KPTCL electrical contractors",
     "High voltage HT contractors Bangalore",
     "Substation construction company Bangalore",
     "Transformer Installation Contractor Bangalore",
@@ -147,7 +145,7 @@ const jsonLd = {
         "@type": "Offer",
         itemOffered: {
           "@type": "Service",
-          name: "KPTCL Turnkey Substation Works",
+          name: "Transformer Erection & Maintenance",
         },
       },
       {

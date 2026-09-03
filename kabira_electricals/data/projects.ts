@@ -32,7 +32,7 @@ export const corporateSectorsData: CorporateSector[] = [
   {
     id: "industrial-utility",
     category: "Industrial Power Grids & Public Utilities",
-    tagline: "KPTCL Bay Line Extensions, Transformer Filtration & Load Enhancement",
+    tagline: "Substation Erection, Transformer Filtration & Load Enhancement",
     clients: [
       "Peenya Industrial Manufacturing Complex",
       "IBPS Water Plant (Mysore)",

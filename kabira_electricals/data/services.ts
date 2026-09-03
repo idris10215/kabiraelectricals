@@ -103,28 +103,6 @@ export const servicesData: ServiceItem[] = [
   },
   {
     id: "5",
-    slug: "kptcl-works",
-    title: "KPTCL Turnkey Works & Substation Erection",
-    shortTitle: "KPTCL Turnkey Works",
-    category: "Karnataka Power Transmission",
-    badge: "KPTCL Turnkey Projects",
-    image: "/kptcl_works.png",
-    summary:
-      "Execution of turnkey KPTCL substation works, high-voltage transmission line erection, bay line extensions, and industrial power evacuation systems across Karnataka.",
-    scope: [
-      "Turnkey Substation Bay Erection, Civil Structure & Equipment Mounting",
-      "High-Voltage Transmission Line Erection & Pole Structures",
-      "Circuit Breakers, Isolators, Lightning Arresters & Relay Panels",
-      "KPTCL Testing, Safety Clearances & Final Grid Energization",
-    ],
-    keySpecs: [
-      "Voltage Levels: 33kV, 66kV, 110kV & 220kV Grids",
-      "EPC Substation Bay Erection & Transmission Towers",
-      "KPTCL Departmental Testing & Grid Synchronization",
-    ],
-  },
-  {
-    id: "6",
     slug: "transformer-works",
     title: "Transformer Works (Erection, Testing & Commissioning)",
     shortTitle: "Transformer Erection & Testing",
@@ -146,7 +124,7 @@ export const servicesData: ServiceItem[] = [
     ],
   },
   {
-    id: "7",
+    id: "6",
     slug: "ceig-work",
     title: "CEIG Work (Safety Clearances & Approvals)",
     shortTitle: "CEIG Safety Approvals",
@@ -168,7 +146,7 @@ export const servicesData: ServiceItem[] = [
     ],
   },
   {
-    id: "8",
+    id: "7",
     slug: "arranging-power-supply",
     title: "Arranging Power Supply & SRTPV Works",
     shortTitle: "Arranging Power Supply",
