@@ -49,7 +49,7 @@ const certificatesData: Certificate[] = [
       "Installation of UG Cable & RMU for Electrical Connection Network",
       "Upgradation Project of IBPS Plant in Pinjarapole Kabini Water Supply Scheme",
     ],
-    imageSrc: "/certificate_mysore.png",
+    imageSrc: "/certificate_mysore.jpeg",
   },
 ];
 
