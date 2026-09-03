@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, FormEvent } from "react";
-import { Phone, Mail, MapPin, MessageSquare, Send } from "lucide-react";
+import { Phone, Mail, MapPin, MessageSquare } from "lucide-react";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -30,7 +30,7 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-12 sm:py-16 px-4 sm:px-6 lg:px-8 bg-white text-slate-900 border-t border-slate-200">
+    <section id="contact" className="scroll-mt-24 sm:scroll-mt-28 py-12 sm:py-16 px-4 sm:px-6 lg:px-8 bg-white text-slate-900 border-t border-slate-200">
       <div className="max-w-7xl mx-auto space-y-10">
 
         {/* Section Header */}
@@ -60,8 +60,8 @@ export default function Contact() {
                 <MapPin className="w-5 h-5 text-amber-400 shrink-0 mt-0.5" />
                 <div>
                   <div className="font-bold text-white text-xs uppercase tracking-wider">Registered Location</div>
-                  <div className="text-slate-300 text-xs mt-1 font-normal">
-                    Frazer Town, Bangalore
+                  <div className="text-slate-300 text-xs mt-1 font-normal leading-relaxed">
+                    38/1, Netaji Rd, Frazer Town, Bengaluru, Karnataka 560005
                   </div>
                 </div>
               </div>
@@ -148,7 +148,7 @@ export default function Contact() {
               </div>
 
               <div>
-                <label className="block text-xs font-bold text-slate-700 mb-1">Facility / Project Location</label>
+                <label className="block text-xs font-bold text-slate-700 mb-1">Project Location</label>
                 <input
                   type="text"
                   placeholder="e.g. Koramangala / Whitefield, Bangalore"

@@ -129,18 +129,18 @@ export default function Projects() {
     <section
       ref={sectionRef}
       id="projects"
-      className="py-12 sm:py-16 bg-slate-50 text-slate-900 border-t border-slate-200 overflow-hidden"
+      className="scroll-mt-24 sm:scroll-mt-28 py-12 sm:py-16 bg-slate-50 text-slate-900 border-t border-slate-200 overflow-hidden"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto space-y-2">
           <h2 className="font-display text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight uppercase">
-            Powering Infrastructure For <span className="text-amber-600">Industry Leaders & Corporate Hubs</span>
+            EXECUTED <span className="text-amber-600">PROJECTS</span>
           </h2>
 
           <p className="text-slate-600 text-sm sm:text-base leading-relaxed font-normal">
-            Delivering high-voltage electrical installations, substation erection, and BESCOM clearances for Karnataka's leading commercial brands, alongside ongoing enterprise partnerships with technology leaders like ACT Fibernet.
+            Delivering high-voltage electrical installations, substation erection, and BESCOM clearances for Karnataka&apos;s leading commercial brands, alongside ongoing enterprise partnerships with technology leaders like ACT Fibernet. Our verified Government completion certificates for municipal and utility projects are available for inspection on our projects portfolio page.
           </p>
         </div>
 

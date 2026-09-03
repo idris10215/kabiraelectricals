@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, TouchEvent } from "react";
 import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
@@ -35,6 +35,8 @@ const aboutGalleryPhotos = [
 export default function About() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [itemsPerPage, setItemsPerPage] = useState(2);
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [touchEnd, setTouchEnd] = useState<number | null>(null);
 
   useEffect(() => {
     const handleResize = () => {
@@ -60,8 +62,40 @@ export default function About() {
     setCurrentIndex((prev) => (prev >= maxIndex ? 0 : prev + 1));
   };
 
+  // Mobile Touch Swipe Handlers
+  const minSwipeDistance = 40;
+
+  const onTouchStart = (e: TouchEvent) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const onTouchMove = (e: TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const onTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > minSwipeDistance;
+    const isRightSwipe = distance < -minSwipeDistance;
+
+    if (isLeftSwipe) {
+      handleNext();
+    } else if (isRightSwipe) {
+      handlePrev();
+    }
+  };
+
+  const getTranslateX = () => {
+    if (itemsPerPage === 1) {
+      return `calc(-1 * ${currentIndex} * (100% + 1rem))`;
+    }
+    return `calc(-1 * ${currentIndex} * ((100% + 1rem) / 2))`;
+  };
+
   return (
-    <section id="about" className="py-12 sm:py-16 px-4 sm:px-6 lg:px-8 bg-white text-slate-900 border-t border-slate-200 overflow-hidden">
+    <section id="about" className="scroll-mt-24 sm:scroll-mt-28 py-12 sm:py-16 px-4 sm:px-6 lg:px-8 bg-white text-slate-900 border-t border-slate-200 overflow-hidden">
       <div className="max-w-7xl mx-auto space-y-10">
         
         {/* Centered Section Title */}
@@ -100,10 +134,15 @@ export default function About() {
                 On-Site Execution Showcase:
               </div>
 
-              {/* Slide Viewport with Exact Same Transparent Amber Chevron Arrows as /about */}
-              <div className="relative">
+              {/* Slide Viewport with Overlay Arrow Buttons & Mobile Touch Support */}
+              <div
+                className="relative"
+                onTouchStart={onTouchStart}
+                onTouchMove={onTouchMove}
+                onTouchEnd={onTouchEnd}
+              >
                 
-                {/* Left Arrow Button */}
+                {/* Left Arrow Icon */}
                 <button
                   onClick={handlePrev}
                   aria-label="Previous Site Photos"
@@ -112,7 +151,7 @@ export default function About() {
                   <ChevronLeft className="w-8 h-8 sm:w-11 sm:h-11 text-amber-500 hover:text-amber-400 drop-shadow-[0_2px_8px_rgba(0,0,0,0.95)] stroke-[3]" />
                 </button>
 
-                {/* Right Arrow Button */}
+                {/* Right Arrow Icon */}
                 <button
                   onClick={handleNext}
                   aria-label="Next Site Photos"
@@ -125,7 +164,7 @@ export default function About() {
                   <div
                     className="flex gap-4 transition-transform duration-500 ease-out"
                     style={{
-                      transform: `translateX(-${currentIndex * (100 / itemsPerPage)}%)`,
+                      transform: `translateX(${getTranslateX()})`,
                     }}
                   >
                     {aboutGalleryPhotos.map((photo, idx) => (

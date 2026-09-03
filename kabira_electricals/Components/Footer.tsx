@@ -27,10 +27,6 @@ export default function Footer() {
             <p className="text-slate-400 text-xs leading-relaxed">
               Govt. Licensed Class 1 Electrical Contractors & Engineers based in Bangalore, Karnataka.
             </p>
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-900 border border-amber-500/30 text-[10px] font-bold text-amber-400 uppercase tracking-widest">
-              <ShieldCheck className="w-3 h-3 text-amber-400" />
-              <span>Class 1 License</span>
-            </div>
           </div>
 
           {/* Col 2: Quick Links (Hidden on small mobile screens to prevent clutter) */}
@@ -84,7 +80,7 @@ export default function Footer() {
             <div className="space-y-2 text-[11px]">
               <div className="flex items-start gap-2">
                 <MapPin className="w-3.5 h-3.5 text-amber-400 shrink-0 mt-0.5" />
-                <span>Frazer Town, Bangalore</span>
+                <span>38/1, Netaji Rd, Frazer Town, Bengaluru, Karnataka 560005</span>
               </div>
               <div className="flex items-center gap-2">
                 <Phone className="w-3.5 h-3.5 text-amber-400 shrink-0" />

@@ -75,7 +75,7 @@ export default function Services() {
   return (
     <section
       id="services"
-      className="relative bg-slate-50 text-slate-900 py-16 sm:py-24 px-4 sm:px-6 lg:px-8 border-t border-slate-200 overflow-hidden"
+      className="scroll-mt-24 sm:scroll-mt-28 relative bg-slate-50 text-slate-900 py-16 sm:py-24 px-4 sm:px-6 lg:px-8 border-t border-slate-200 overflow-hidden"
     >
       {/* Background Grid Pattern */}
       <div className="absolute inset-0 bg-[radial-gradient(#e2e8f0_1px,transparent_1px)] [background-size:24px_24px] opacity-60 pointer-events-none" />
@@ -84,10 +84,6 @@ export default function Services() {
 
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto space-y-3 border-b border-slate-200 pb-6">
-          <div className="inline-flex items-center gap-2 border border-amber-500/30 bg-amber-50 px-3.5 py-1 text-xs font-semibold uppercase tracking-wider text-amber-700">
-            <Zap className="w-3.5 h-3.5 text-amber-500 fill-amber-500" />
-            <span>Class 1 Engineering Scope</span>
-          </div>
 
           <h2 className="font-display text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight uppercase">
             Our Core <span className="text-amber-600">Services</span>
@@ -96,8 +92,8 @@ export default function Services() {
 
         {/* Carousel Viewport Wrapper */}
         <div className="relative">
-          
-          {/* Left Arrow Icon (Clean Minimalist Amber Arrow - NO Dark Circle Background) */}
+
+          {/* Left Arrow Icon */}
           <button
             onClick={handlePrev}
             aria-label="Previous Service"
@@ -106,7 +102,7 @@ export default function Services() {
             <ChevronLeft className="w-8 h-8 sm:w-11 sm:h-11 text-amber-500 hover:text-amber-400 drop-shadow-[0_2px_8px_rgba(0,0,0,0.95)] stroke-[3]" />
           </button>
 
-          {/* Right Arrow Icon (Clean Minimalist Amber Arrow - NO Dark Circle Background) */}
+          {/* Right Arrow Icon */}
           <button
             onClick={handleNext}
             aria-label="Next Service"
@@ -115,13 +111,12 @@ export default function Services() {
             <ChevronRight className="w-8 h-8 sm:w-11 sm:h-11 text-amber-500 hover:text-amber-400 drop-shadow-[0_2px_8px_rgba(0,0,0,0.95)] stroke-[3]" />
           </button>
 
-          {/* Inner Cards Viewport (Clipped cleanly with overflow-hidden) */}
+          {/* Inner Cards Viewport */}
           <div className="w-full overflow-hidden py-1">
             <div
               onTransitionEnd={handleTransitionEnd}
-              className={`flex gap-4 sm:gap-6 ${
-                isTransitioning ? "transition-transform duration-500 ease-out" : "transition-none"
-              }`}
+              className={`flex gap-4 sm:gap-6 ${isTransitioning ? "transition-transform duration-500 ease-out" : "transition-none"
+                }`}
               style={{
                 transform: `translateX(${getTranslateX()})`,
               }}
@@ -134,8 +129,8 @@ export default function Services() {
                       itemsPerPage === 1
                         ? "0 0 100%"
                         : itemsPerPage === 2
-                        ? "0 0 calc((100% - 1.5rem) / 2)"
-                        : "0 0 calc((100% - 4.5rem) / 4)",
+                          ? "0 0 calc((100% - 1.5rem) / 2)"
+                          : "0 0 calc((100% - 4.5rem) / 4)",
                   }}
                   className="shrink-0"
                 >

@@ -1,12 +1,13 @@
 import Navbar from "@/Components/Navbar";
 import Footer from "@/Components/Footer";
+import Certificates from "@/Components/Certificates";
 import Link from "next/link";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { corporateSectorsData, privateEstatesSummaryData } from "@/data/projects";
 
 export const metadata = {
-  title: "Executed Projects Portfolio | Kabira Electricals",
-  description: "Official sector showcase of turnkey HT/LT electrical engineering projects executed by Kabira Electricals across Karnataka.",
+  title: "Executed Projects & Government Certifications | Kabira Electricals",
+  description: "Official sector showcase and government completion certificates of turnkey HT/LT electrical engineering projects executed by Kabira Electricals across Karnataka.",
 };
 
 export default function ProjectsPage() {
@@ -27,57 +28,73 @@ export default function ProjectsPage() {
 
           <div className="space-y-2">
             <h1 className="font-display text-3xl sm:text-5xl lg:text-6xl font-extrabold uppercase tracking-tight text-white leading-tight">
-              Executed Projects <span className="text-amber-500">Sector Showcase</span>
+              Executed Projects & <span className="text-amber-500">Government Certifications</span>
             </h1>
-
-            <p className="max-w-3xl text-slate-300 text-xs sm:text-sm lg:text-base leading-relaxed font-normal">
-              A portfolio of turnkey HT/LT electrical engineering installations executed by Kabira Electricals across commercial, tech park, industrial, and healthcare sectors in Karnataka.
-            </p>
           </div>
         </div>
       </section>
 
-      {/* Main 4 Sector Grid Showcase */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-20 space-y-8 sm:space-y-12">
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
-          {corporateSectorsData.map((sector) => (
-            <div
-              key={sector.id}
-              className="bg-white border border-slate-200 p-6 sm:p-8 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between space-y-6 sm:space-y-8 rounded-none"
-            >
-              {/* Sector Header */}
-              <div className="space-y-2 border-b border-slate-100 pb-4 sm:pb-6">
-                <h2 className="text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight leading-snug">
-                  {sector.category}
-                </h2>
-                <p className="text-[11px] sm:text-xs font-bold uppercase tracking-wider text-amber-600">
-                  {sector.tagline}
-                </p>
-              </div>
+      {/* Main Sector Grid & Certificates Showcase */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-20 space-y-12 sm:space-y-16">
 
-              {/* Representative Client Brands */}
-              <div className="space-y-3">
-                <div className="text-[10px] sm:text-xs font-extrabold text-slate-400 uppercase tracking-widest">
-                  Key Client Establishments:
-                </div>
-                <div className="flex flex-wrap gap-2">
-                  {sector.clients.map((clientName, idx) => (
-                    <span
-                      key={idx}
-                      className="px-3 py-1.5 bg-slate-50 border border-slate-200 text-slate-900 text-xs font-bold shadow-2xs hover:border-amber-500/50 hover:bg-amber-50/50 transition-colors rounded-none"
-                    >
-                      {clientName}
-                    </span>
-                  ))}
-                </div>
-              </div>
+        {/* Centered Starting Paragraph */}
+        <p className="max-w-3xl mx-auto text-center text-slate-600 text-xs sm:text-sm lg:text-base leading-relaxed font-normal">
+          A comprehensive portfolio of turnkey HT/LT electrical installations executed across Karnataka&apos;s leading commercial tech parks, industrial plants, and municipal water supply schemes. Verified Government completion certificates issued by BESCOM and Mysore City Corporation are featured below for official audit and compliance inspection.
+        </p>
 
-            </div>
-          ))}
+        {/* 1. Official Government Completion Certificates Section */}
+        <Certificates />
+
+        {/* 2. Main 4 Sector Grid Showcase */}
+        <div className="space-y-6 pt-6 border-t border-slate-200">
+          <div className="space-y-1">
+            <h2 className="font-display text-2xl sm:text-4xl font-extrabold uppercase tracking-tight text-slate-900">
+              Sector Execution Showcase
+            </h2>
+            <p className="text-xs sm:text-sm text-slate-600 font-normal">
+              Enterprise HT/LT electrical installations executed across major commercial and industrial sectors.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+            {corporateSectorsData.map((sector) => (
+              <div
+                key={sector.id}
+                className="bg-white border border-slate-200 p-6 sm:p-8 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between space-y-6 sm:space-y-8 rounded-none"
+              >
+                {/* Sector Header */}
+                <div className="space-y-2 border-b border-slate-100 pb-4 sm:pb-6">
+                  <h3 className="text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight leading-snug">
+                    {sector.category}
+                  </h3>
+                  <p className="text-[11px] sm:text-xs font-bold uppercase tracking-wider text-amber-600">
+                    {sector.tagline}
+                  </p>
+                </div>
+
+                {/* Representative Client Brands */}
+                <div className="space-y-3">
+                  <div className="text-[10px] sm:text-xs font-extrabold text-slate-400 uppercase tracking-widest">
+                    Key Client Establishments:
+                  </div>
+                  <div className="flex flex-wrap gap-2">
+                    {sector.clients.map((clientName, idx) => (
+                      <span
+                        key={idx}
+                        className="px-3 py-1.5 bg-slate-50 border border-slate-200 text-slate-900 text-xs font-bold shadow-2xs hover:border-amber-500/50 hover:bg-amber-50/50 transition-colors rounded-none"
+                      >
+                        {clientName}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+              </div>
+            ))}
+          </div>
         </div>
 
-        {/* Private Commercial & Residential Estates Summary Card */}
+        {/* 3. Private Commercial & Residential Estates Summary Card */}
         <div className="p-6 sm:p-8 bg-white border border-slate-200 shadow-sm space-y-4 rounded-none">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-100 pb-4">
             <h3 className="text-lg sm:text-xl font-extrabold text-slate-900 tracking-tight">
@@ -93,7 +110,7 @@ export default function ProjectsPage() {
           </p>
         </div>
 
-        {/* Executive Consultation Callout Banner -> Routes directly to /contact */}
+        {/* 4. Executive Consultation Callout Banner -> Routes directly to /contact */}
         <div className="p-8 sm:p-12 bg-slate-900 text-white text-center space-y-6 shadow-2xl border border-slate-800 rounded-none">
           <h3 className="font-display text-2xl sm:text-4xl font-extrabold uppercase tracking-tight">
             Have a Similar Electrical Project Requirement?

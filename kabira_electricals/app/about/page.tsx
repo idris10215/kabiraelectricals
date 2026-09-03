@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, TouchEvent } from "react";
 import Navbar from "@/Components/Navbar";
 import Footer from "@/Components/Footer";
 import Image from "next/image";
@@ -37,6 +37,8 @@ const curatedGalleryPhotos = [
 export default function AboutPage() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [itemsPerPage, setItemsPerPage] = useState(2);
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [touchEnd, setTouchEnd] = useState<number | null>(null);
 
   useEffect(() => {
     const handleResize = () => {
@@ -60,6 +62,38 @@ export default function AboutPage() {
 
   const handleNext = () => {
     setCurrentIndex((prev) => (prev >= maxIndex ? 0 : prev + 1));
+  };
+
+  // Touch Swipe Handlers for Mobile
+  const minSwipeDistance = 40;
+
+  const onTouchStart = (e: TouchEvent) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const onTouchMove = (e: TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const onTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > minSwipeDistance;
+    const isRightSwipe = distance < -minSwipeDistance;
+
+    if (isLeftSwipe) {
+      handleNext();
+    } else if (isRightSwipe) {
+      handlePrev();
+    }
+  };
+
+  const getTranslateX = () => {
+    if (itemsPerPage === 1) {
+      return `calc(-1 * ${currentIndex} * (100% + 1rem))`;
+    }
+    return `calc(-1 * ${currentIndex} * ((100% + 1rem) / 2))`;
   };
 
   return (
@@ -136,8 +170,13 @@ export default function AboutPage() {
             </h2>
           </div>
 
-          {/* 2-Card Viewport with Exact Services-Style Amber Arrow Buttons */}
-          <div className="relative">
+          {/* 2-Card Viewport with Touch Swiping and Exact Amber Arrow Buttons */}
+          <div
+            className="relative"
+            onTouchStart={onTouchStart}
+            onTouchMove={onTouchMove}
+            onTouchEnd={onTouchEnd}
+          >
             
             {/* Left Arrow Button */}
             <button
@@ -161,7 +200,7 @@ export default function AboutPage() {
               <div
                 className="flex gap-4 transition-transform duration-500 ease-out"
                 style={{
-                  transform: `translateX(-${currentIndex * (100 / itemsPerPage)}%)`,
+                  transform: `translateX(${getTranslateX()})`,
                 }}
               >
                 {curatedGalleryPhotos.map((photo, idx) => (
