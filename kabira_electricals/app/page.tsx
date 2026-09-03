@@ -6,6 +6,7 @@ import Projects from "@/Components/Projects";
 import About from "@/Components/About";
 import Contact from "@/Components/Contact";
 import Footer from "@/Components/Footer";
+import Chatbot from "@/Components/Chatbot";
 
 export default function Home() {
   return (
@@ -29,6 +30,9 @@ export default function Home() {
 
       {/* 6. Footer */}
       <Footer />
+
+      {/* 7. Homepage Engineering Assistant Chatbot */}
+      <Chatbot />
     </main>
   );
 }

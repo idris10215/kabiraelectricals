@@ -29,10 +29,6 @@ export default function ServicesPage() {
           </Link>
 
           <div className="space-y-3">
-            <div className="inline-flex items-center gap-2 border border-amber-500/40 bg-slate-950/80 px-3.5 py-1.5 text-xs font-semibold uppercase tracking-wider text-amber-300">
-              <Zap className="w-4 h-4 text-amber-400" />
-              <span>Govt. Licensed Class 1 Contractor & Engineers</span>
-            </div>
 
             <h1 className="font-display text-3xl sm:text-5xl lg:text-6xl font-extrabold uppercase tracking-tight text-white">
               Specialized <span className="text-amber-500">Engineering Services</span>
