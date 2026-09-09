@@ -55,7 +55,10 @@ export const metadata: Metadata = {
     "Frazer Town Electrical Contractor",
   ],
   icons: {
-    icon: "/icon.svg",
+    icon: [
+      { url: "/icon.svg", type: "image/svg+xml" },
+      { url: "/favicon.ico", sizes: "any" },
+    ],
     shortcut: "/icon.svg",
     apple: "/icon.svg",
   },
@@ -159,6 +162,41 @@ const jsonLd = {
   },
 };
 
+const sitelinksJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  itemListElement: [
+    {
+      "@type": "SiteNavigationElement",
+      position: 1,
+      name: "Services",
+      description: "Class 1 HT/LT Electrical Engineering & Substation Services",
+      url: "https://kabiraelectricals.com/services",
+    },
+    {
+      "@type": "SiteNavigationElement",
+      position: 2,
+      name: "Projects",
+      description: "Executed High-Voltage & Commercial Electrical Contracting Projects",
+      url: "https://kabiraelectricals.com/projects",
+    },
+    {
+      "@type": "SiteNavigationElement",
+      position: 3,
+      name: "About Us",
+      description: "15+ Years of Licensed Electrical Engineering Excellence in Bangalore",
+      url: "https://kabiraelectricals.com/about",
+    },
+    {
+      "@type": "SiteNavigationElement",
+      position: 4,
+      name: "Contact Us",
+      description: "Get in touch with Mr. Afzal Khan & Kabira Electricals Team",
+      url: "https://kabiraelectricals.com/contact",
+    },
+  ],
+};
+
 export default function RootLayout({
   children,
 }: {
@@ -174,6 +212,10 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(sitelinksJsonLd) }}
         />
       </head>
       <body className={`${inter.className} min-h-full flex flex-col font-sans bg-slate-50 text-slate-900`}>
