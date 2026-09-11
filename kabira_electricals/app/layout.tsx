@@ -59,6 +59,9 @@ export const metadata: Metadata = {
     shortcut: "/icon.svg",
     apple: "/icon.svg",
   },
+  alternates: {
+    canonical: "https://kabiraelectricals.com",
+  },
   authors: [{ name: "Kabira Electricals", url: "https://kabiraelectricals.com" }],
   creator: "Kabira Electricals",
   publisher: "Kabira Electricals",
@@ -194,6 +197,43 @@ const sitelinksJsonLd = {
   ],
 };
 
+const breadcrumbJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Home",
+      item: "https://kabiraelectricals.com",
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "Services",
+      item: "https://kabiraelectricals.com/services",
+    },
+    {
+      "@type": "ListItem",
+      position: 3,
+      name: "Projects",
+      item: "https://kabiraelectricals.com/projects",
+    },
+    {
+      "@type": "ListItem",
+      position: 4,
+      name: "About Us",
+      item: "https://kabiraelectricals.com/about",
+    },
+    {
+      "@type": "ListItem",
+      position: 5,
+      name: "Contact Us",
+      item: "https://kabiraelectricals.com/contact",
+    },
+  ],
+};
+
 export default function RootLayout({
   children,
 }: {
@@ -213,6 +253,10 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(sitelinksJsonLd) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
         />
       </head>
       <body className={`${inter.className} min-h-full flex flex-col font-sans bg-slate-50 text-slate-900`}>
